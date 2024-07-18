@@ -1,0 +1,38 @@
+import 'package:dio/dio.dart';
+import 'package:flcore/core/exceptions/exceptions.dart';
+
+abstract class StatusCodeHandler {
+  const StatusCodeHandler({
+    required this.statusCode,
+    required this.callback,
+  });
+
+  final int statusCode;
+  final void Function() callback;
+
+  void handle(Response<dynamic> response) {
+    if (response.statusCode == statusCode) {
+      callback();
+    }
+  }
+}
+
+class Handle401 extends StatusCodeHandler {
+  Handle401()
+      : super(
+          statusCode: 401,
+          callback: () {
+            throw UnauthorizedException();
+          },
+        );
+}
+
+class Handle500 extends StatusCodeHandler {
+  Handle500()
+      : super(
+          statusCode: 500,
+          callback: () {
+            throw InternalServerException();
+          },
+        );
+}
