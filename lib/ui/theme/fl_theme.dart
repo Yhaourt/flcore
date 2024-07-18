@@ -35,6 +35,21 @@ class FlTheme {
     );
   }
 
+  static ThemeData darkTheme() {
+    return _baseTheme.copyWith(
+      brightness: _darkColorScheme().brightness,
+      colorScheme: _darkColorScheme(),
+      scaffoldBackgroundColor: _darkColorScheme().background,
+      textTheme: _baseTheme.textTheme.apply(
+        bodyColor: _darkColorScheme().onSurface,
+        displayColor: _darkColorScheme().onSurface,
+      ),
+      iconTheme: _baseTheme.iconTheme.copyWith(
+        color: _darkColorScheme().onSurface,
+      ),
+    );
+  }
+
   static ColorScheme _lightColorScheme() => ColorScheme.light(
         brightness: Brightness.light,
         primary: Colors.green,
@@ -45,6 +60,20 @@ class FlTheme {
         onTertiary: Colors.grey[900]!,
         surface: Colors.grey[100]!,
         onSurface: Colors.grey[900]!,
+        error: Colors.red[400]!,
+        onError: Colors.white,
+      );
+
+  static ColorScheme _darkColorScheme() => ColorScheme.dark(
+        brightness: Brightness.dark,
+        primary: Colors.green,
+        onPrimary: Colors.white,
+        secondary: Colors.lime,
+        onSecondary: Colors.white,
+        tertiary: Colors.grey[900]!,
+        onTertiary: Colors.grey[100]!,
+        surface: Colors.grey[900]!,
+        onSurface: Colors.grey[100]!,
         error: Colors.red[400]!,
         onError: Colors.white,
       );
