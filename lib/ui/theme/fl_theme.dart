@@ -97,4 +97,10 @@ class FlTheme {
   static const double borderRadiusLg = 15;
 
   static const double borderRadiusFull = double.infinity;
+
+  static const BoxShadow shadow = BoxShadow(
+    color: Colors.black12,
+    blurRadius: 10,
+    offset: Offset(0, 5),
+  );
 }
