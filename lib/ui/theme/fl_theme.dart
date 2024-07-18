@@ -1,9 +1,8 @@
-import 'package:flcore/ui/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AppTheme {
-  const AppTheme();
+class FlTheme {
+  const FlTheme();
 
   static final ThemeData _baseTheme = ThemeData(
     fontFamily: GoogleFonts.poppins().fontFamily,
@@ -27,25 +26,23 @@ class AppTheme {
       colorScheme: _lightColorScheme(),
       scaffoldBackgroundColor: _lightColorScheme().background,
       textTheme: _baseTheme.textTheme.apply(
-        bodyColor: _lightColorScheme().onBackground,
-        displayColor: _lightColorScheme().onBackground,
+        bodyColor: _lightColorScheme().onSurface,
+        displayColor: _lightColorScheme().onSurface,
       ),
       iconTheme: _baseTheme.iconTheme.copyWith(
-        color: _lightColorScheme().onBackground,
+        color: _lightColorScheme().onSurface,
       ),
     );
   }
 
   static ColorScheme _lightColorScheme() => ColorScheme.light(
         brightness: Brightness.light,
-        primary: AppColors.emerald,
+        primary: Colors.green,
         onPrimary: Colors.white,
-        secondary: AppColors.mint,
+        secondary: Colors.lime,
         onSecondary: Colors.white,
         tertiary: Colors.grey[100]!,
         onTertiary: Colors.grey[900]!,
-        background: Colors.white,
-        onBackground: Colors.grey[900]!,
         surface: Colors.grey[100]!,
         onSurface: Colors.grey[900]!,
         error: Colors.red[400]!,
@@ -64,5 +61,9 @@ class AppTheme {
 
   static double get paddingLarge => 30;
 
-  static double get borderRadius => 5;
+  static double get borderRadiusSmall => 5;
+
+  static double get borderRadius => 10;
+
+  static double get borderRadiusLarge => 15;
 }

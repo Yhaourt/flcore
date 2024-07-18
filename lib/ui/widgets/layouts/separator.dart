@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class AppDivider extends StatelessWidget {
-  const AppDivider({
+class Separator extends StatelessWidget {
+  const Separator({
     super.key,
     this.topSpace = 20,
     this.bottomSpace = 20,

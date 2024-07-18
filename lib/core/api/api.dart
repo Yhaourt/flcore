@@ -1,8 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flcore/core/api/method.dart';
 import 'package:flcore/core/exceptions/exceptions.dart';
 import 'package:flcore/utils/helpers/logger_helper.dart';
-
-enum Method { get, post, put, delete }
 
 class Api {
   late final Dio dio;
@@ -37,7 +36,7 @@ class Api {
         path,
         data: data,
         options: Options(
-          method: _methodToString(method),
+          method: methodToString(method),
           headers: headers,
         ),
       );
@@ -78,18 +77,5 @@ class Api {
         },
       ),
     );
-  }
-
-  String _methodToString(Method method) {
-    switch (method) {
-      case Method.get:
-        return 'GET';
-      case Method.post:
-        return 'POST';
-      case Method.put:
-        return 'PUT';
-      case Method.delete:
-        return 'DELETE';
-    }
   }
 }

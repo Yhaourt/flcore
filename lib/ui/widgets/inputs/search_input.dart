@@ -1,4 +1,4 @@
-import 'package:flcore/ui/theme/app_theme.dart';
+import 'package:flcore/ui/theme/fl_theme.dart';
 import 'package:flutter/material.dart';
 
 class SearchInput extends StatelessWidget {
@@ -29,7 +29,7 @@ class SearchInput extends StatelessWidget {
         filled: true,
         fillColor: Theme.of(context).colorScheme.surface,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppTheme.borderRadius),
+          borderRadius: BorderRadius.circular(FlTheme.borderRadius),
           borderSide: BorderSide.none,
         ),
         suffixIcon: trailing != null

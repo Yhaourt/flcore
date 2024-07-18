@@ -1,6 +1,6 @@
-import 'package:flcore/ui/widgets/async/loader.dart';
+import 'package:flcore/ui/widgets/loading/loader.dart';
 import 'package:flutter/material.dart';
-import 'package:flcore/ui/theme/app_theme.dart';
+import 'package:flcore/ui/theme/fl_theme.dart';
 
 class Button extends StatelessWidget {
   const Button({
@@ -9,14 +9,14 @@ class Button extends StatelessWidget {
     required this.onPressed,
     this.expanded = false,
     this.borderRadius,
-    this.loading = false,
+    this.isLoading = false,
   });
 
   final String text;
   final VoidCallback onPressed;
   final bool expanded;
   final double? borderRadius;
-  final bool loading;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -27,12 +27,12 @@ class Button extends StatelessWidget {
           fixedSize: const Size.fromHeight(50),
           backgroundColor: Theme.of(context).colorScheme.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppTheme.borderRadius),
+            borderRadius: BorderRadius.circular(FlTheme.borderRadius),
           ),
           elevation: 0,
         ),
         onPressed: onPressed,
-        child: (loading)
+        child: (isLoading)
             ? Loader(
                 size: LoaderSize.small,
                 color: Theme.of(context).colorScheme.onPrimary)

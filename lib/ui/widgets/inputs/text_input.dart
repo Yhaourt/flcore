@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flcore/ui/theme/app_theme.dart';
+import 'package:flcore/ui/theme/fl_theme.dart';
 
 class TextInput extends StatefulWidget {
   const TextInput({
@@ -72,14 +72,14 @@ class _TextInputState extends State<TextInput> {
               )
             : null,
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppTheme.borderRadius),
+          borderRadius: BorderRadius.circular(FlTheme.borderRadius),
           borderSide: BorderSide(
             color: Theme.of(context).colorScheme.primary,
             width: 2,
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppTheme.borderRadius),
+          borderRadius: BorderRadius.circular(FlTheme.borderRadius),
           borderSide: BorderSide(
             color: Theme.of(context).colorScheme.primary,
             width: 2,
