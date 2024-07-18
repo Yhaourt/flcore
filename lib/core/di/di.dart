@@ -5,7 +5,7 @@ final di = GetIt.instance;
 class DependencyInjection {
   static Future<void> init({
     required Function(GetIt) configure,
-    required Function(GetIt) finalize,
+    Function(GetIt)? finalize,
   }) async {
     configure(di);
 
@@ -13,6 +13,6 @@ class DependencyInjection {
       timeout: const Duration(seconds: 5),
     );
 
-    finalize(di);
+    if (finalize != null) finalize(di);
   }
 }
