@@ -78,21 +78,23 @@ class FlTheme {
         onError: Colors.white,
       );
 
-  static double get spacingSmall => 8;
+  static const double spacingSm = 8;
 
-  static double get spacing => 15;
+  static const double spacing = 15;
 
-  static double get spacingLarge => 30;
+  static const double spacingLg = 30;
 
-  static double get paddingSmall => 8;
+  static const double paddingSm = 8;
 
-  static double get padding => 15;
+  static const double padding = 15;
 
-  static double get paddingLarge => 30;
+  static const double paddingLg = 30;
 
-  static double get borderRadiusSmall => 5;
+  static const double borderRadiusSm = 5;
 
-  static double get borderRadius => 10;
+  static const double borderRadius = 10;
 
-  static double get borderRadiusLarge => 15;
+  static const double borderRadiusLg = 15;
+
+  static const double borderRadiusFull = double.infinity;
 }
