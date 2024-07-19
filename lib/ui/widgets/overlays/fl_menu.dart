@@ -58,27 +58,30 @@ class FlMenuItem<T> extends PopupMenuEntry<T> {
 class _FlMenuItemState<T> extends State<FlMenuItem<T>> {
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () => Navigator.pop(context, widget.value),
-      child: Row(
-        children: [
-          if (widget.icon != null) ...[
-            const SizedBox(width: 8),
-            Icon(
-              widget.icon,
-              color:
-                  widget.iconColor ?? Theme.of(context).colorScheme.onSurface,
+    return SizedBox(
+      height: 40,
+      child: GestureDetector(
+        onTap: () => Navigator.pop(context, widget.value),
+        child: Row(
+          children: [
+            if (widget.icon != null) ...[
+              const SizedBox(width: 8),
+              Icon(
+                widget.icon,
+                color:
+                    widget.iconColor ?? Theme.of(context).colorScheme.onSurface,
+              ),
+              const SizedBox(width: 8),
+            ],
+            Text(
+              widget.text,
+              style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                    color: widget.textColor ??
+                        Theme.of(context).colorScheme.onSurface,
+                  ),
             ),
-            const SizedBox(width: 8),
           ],
-          Text(
-            widget.text,
-            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                  color: widget.textColor ??
-                      Theme.of(context).colorScheme.onSurface,
-                ),
-          ),
-        ],
+        ),
       ),
     );
   }
