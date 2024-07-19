@@ -20,7 +20,7 @@ class SearchInput extends StatelessWidget {
     return TextField(
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: Theme.of(context).textTheme.bodyLarge,
+        hintStyle: Theme.of(context).textTheme.bodyMedium,
         prefixIcon: Icon(Icons.search),
         contentPadding: const EdgeInsets.symmetric(
           vertical: 13,
