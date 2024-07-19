@@ -46,7 +46,7 @@ class FlMenuItem<T> extends PopupMenuEntry<T> {
   State<StatefulWidget> createState() => _FlMenuItemState<T>();
 
   @override
-  double get height => 32;
+  double get height => 40;
 
   @override
   bool represents(T? value) {
