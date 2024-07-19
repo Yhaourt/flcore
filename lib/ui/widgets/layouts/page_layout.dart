@@ -11,18 +11,20 @@ class PageLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        FlTheme.paddingLg,
-        0,
-        FlTheme.paddingLg,
-        FlTheme.paddingLg,
-      ),
-      child: Column(
-        children: [
-          child,
-        ],
-      ),
+    return Column(
+      children: [
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(
+              FlTheme.paddingLg,
+              0,
+              FlTheme.paddingLg,
+              FlTheme.paddingLg,
+            ),
+            child: child,
+          ),
+        ),
+      ],
     );
   }
 }
