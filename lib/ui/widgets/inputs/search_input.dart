@@ -5,14 +5,14 @@ class SearchInput extends StatelessWidget {
   const SearchInput({
     super.key,
     this.hintText = 'Rechercher',
-    this.trailing,
-    this.onTrailingPressed,
+    this.suffixIcon,
+    this.onSuffixIconPressed,
     this.onChanged,
   });
 
   final String hintText;
-  final Widget? trailing;
-  final void Function()? onTrailingPressed;
+  final IconData? suffixIcon;
+  final void Function()? onSuffixIconPressed;
   final void Function(String)? onChanged;
 
   @override
@@ -33,10 +33,11 @@ class SearchInput extends StatelessWidget {
           borderRadius: BorderRadius.circular(FlTheme.borderRadius),
           borderSide: BorderSide.none,
         ),
-        suffixIcon: trailing != null
+        suffixIcon: suffixIcon != null
             ? IconButton(
-                icon: trailing!,
-                onPressed: onTrailingPressed,
+                icon: Icon(suffixIcon),
+                color: Theme.of(context).colorScheme.onSurface,
+                onPressed: onSuffixIconPressed,
               )
             : null,
       ),
