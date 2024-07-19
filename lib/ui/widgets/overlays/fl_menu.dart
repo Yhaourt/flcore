@@ -46,8 +46,7 @@ class FlMenuItem<T> extends PopupMenuEntry<T> {
   State<StatefulWidget> createState() => _FlMenuItemState<T>();
 
   @override
-  // TODO: implement height
-  double get height => throw UnimplementedError();
+  double get height => 32;
 
   @override
   bool represents(T? value) {
@@ -59,23 +58,28 @@ class FlMenuItem<T> extends PopupMenuEntry<T> {
 class _FlMenuItemState<T> extends State<FlMenuItem<T>> {
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      title: Text(
-        widget.text,
-        style: TextStyle(
-          color: widget.textColor ?? Theme.of(context).colorScheme.onSurface,
-        ),
-      ),
-      leading: widget.icon != null
-          ? Icon(
+    return GestureDetector(
+      onTap: () => Navigator.pop(context, widget.value),
+      child: Row(
+        children: [
+          if (widget.icon != null) ...[
+            const SizedBox(width: 8),
+            Icon(
               widget.icon,
               color:
                   widget.iconColor ?? Theme.of(context).colorScheme.onSurface,
-            )
-          : null,
-      onTap: () {
-        Navigator.pop(context, widget.value);
-      },
+            ),
+            const SizedBox(width: 8),
+          ],
+          Text(
+            widget.text,
+            style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                  color: widget.textColor ??
+                      Theme.of(context).colorScheme.onSurface,
+                ),
+          ),
+        ],
+      ),
     );
   }
 }
