@@ -8,11 +8,13 @@ class FlApp extends StatelessWidget {
     super.key,
     required this.title,
     required this.router,
+    this.theme = const FlTheme(),
     this.providers = const <BlocProvider>[],
   });
 
   final String title;
   final FlRouter router;
+  final FlTheme theme;
   final List<BlocProvider> providers;
 
   @override
@@ -24,7 +26,8 @@ class FlApp extends StatelessWidget {
         title: title,
         restorationScopeId: '${title.toLowerCase()}-app',
         themeMode: ThemeMode.light,
-        theme: FlTheme.lightTheme(),
+        theme: theme.lightTheme(),
+        darkTheme: theme.darkTheme(),
         routerConfig: router.router,
         builder: (context, child) {
           return Overlay(

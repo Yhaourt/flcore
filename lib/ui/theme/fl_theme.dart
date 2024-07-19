@@ -2,7 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FlTheme {
-  const FlTheme();
+  const FlTheme({
+    this.primaryColor = Colors.green,
+    this.secondaryColor = Colors.lime,
+  });
+
+  final Color primaryColor;
+  final Color secondaryColor;
 
   static final ThemeData _baseTheme = ThemeData(
     fontFamily: GoogleFonts.poppins().fontFamily,
@@ -20,41 +26,43 @@ class FlTheme {
     ),
   );
 
-  static ThemeData lightTheme() {
+  ThemeData lightTheme() {
+    final ColorScheme colorScheme = _lightColorScheme();
     return _baseTheme.copyWith(
-      brightness: _lightColorScheme().brightness,
-      colorScheme: _lightColorScheme(),
+      brightness: colorScheme.brightness,
+      colorScheme: colorScheme,
       scaffoldBackgroundColor: Colors.grey[50],
       textTheme: _baseTheme.textTheme.apply(
-        bodyColor: _lightColorScheme().onSurface,
-        displayColor: _lightColorScheme().onSurface,
+        bodyColor: colorScheme.onSurface,
+        displayColor: colorScheme.onSurface,
       ),
       iconTheme: _baseTheme.iconTheme.copyWith(
-        color: _lightColorScheme().onSurface,
+        color: colorScheme.onSurface,
       ),
     );
   }
 
-  static ThemeData darkTheme() {
+  ThemeData darkTheme() {
+    final ColorScheme colorScheme = _darkColorScheme();
     return _baseTheme.copyWith(
-      brightness: _darkColorScheme().brightness,
-      colorScheme: _darkColorScheme(),
-      scaffoldBackgroundColor: _darkColorScheme().background,
+      brightness: colorScheme.brightness,
+      colorScheme: colorScheme,
+      scaffoldBackgroundColor: Colors.grey[900],
       textTheme: _baseTheme.textTheme.apply(
-        bodyColor: _darkColorScheme().onSurface,
-        displayColor: _darkColorScheme().onSurface,
+        bodyColor: colorScheme.onSurface,
+        displayColor: colorScheme.onSurface,
       ),
       iconTheme: _baseTheme.iconTheme.copyWith(
-        color: _darkColorScheme().onSurface,
+        color: colorScheme.onSurface,
       ),
     );
   }
 
-  static ColorScheme _lightColorScheme() => ColorScheme.light(
+  ColorScheme _lightColorScheme() => ColorScheme.light(
         brightness: Brightness.light,
-        primary: Colors.green,
+        primary: primaryColor,
         onPrimary: Colors.white,
-        secondary: Colors.lime,
+        secondary: secondaryColor,
         onSecondary: Colors.white,
         tertiary: Colors.grey[100]!,
         onTertiary: Colors.grey[900]!,
@@ -64,11 +72,11 @@ class FlTheme {
         onError: Colors.white,
       );
 
-  static ColorScheme _darkColorScheme() => ColorScheme.dark(
+  ColorScheme _darkColorScheme() => ColorScheme.dark(
         brightness: Brightness.dark,
-        primary: Colors.green,
+        primary: primaryColor,
         onPrimary: Colors.white,
-        secondary: Colors.lime,
+        secondary: secondaryColor,
         onSecondary: Colors.white,
         tertiary: Colors.grey[900]!,
         onTertiary: Colors.grey[100]!,
@@ -97,10 +105,4 @@ class FlTheme {
   static const double borderRadiusLg = 15;
 
   static const double borderRadiusFull = double.infinity;
-
-  static const BoxShadow shadow = BoxShadow(
-    color: Colors.black12,
-    blurRadius: 10,
-    offset: Offset(0, 5),
-  );
 }
