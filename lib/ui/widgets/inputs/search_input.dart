@@ -19,7 +19,7 @@ class SearchInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       decoration: InputDecoration(
-        hintText: 'Search',
+        hintText: hintText,
         hintStyle: Theme.of(context).textTheme.bodyLarge,
         prefixIcon: Icon(Icons.search),
         contentPadding: const EdgeInsets.symmetric(
