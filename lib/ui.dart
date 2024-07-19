@@ -22,5 +22,10 @@ export 'ui/widgets/layouts/separator.dart';
 export 'ui/widgets/loading/loader.dart';
 export 'ui/widgets/loading/loading_placeholder.dart';
 
+// Path: ui/widgets/overlays
+export 'ui/widgets/overlays/fl_dialog.dart';
+export 'ui/widgets/overlays/fl_modal_bottom_sheet.dart';
+export 'ui/widgets/overlays/fl_menu.dart';
+
 // Path: ui/widgets/users
 export 'ui/widgets/users/avatar.dart';
