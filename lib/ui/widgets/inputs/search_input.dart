@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class SearchInput extends StatelessWidget {
   const SearchInput({
     super.key,
-    this.hintText = 'Rechercher ...',
+    this.hintText = 'Rechercher',
     this.trailing,
     this.onTrailingPressed,
     this.onChanged,
