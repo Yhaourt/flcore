@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 void showFlMenu<T>(
   BuildContext context, {
-  required Widget child,
   required Offset position,
   required List<PopupMenuEntry<T>> items,
   required void Function(T value) onSelected,
