@@ -12,8 +12,10 @@ void showFlMenu<T>(
     surfaceTintColor: Theme.of(context).colorScheme.surface,
     elevation: 1,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+      borderRadius: BorderRadius.circular(FlTheme.borderRadiusSm),
     ),
+    // no animation
+    popUpAnimationStyle: AnimationStyle.noAnimation,
     position: RelativeRect.fromLTRB(
       position.dx,
       position.dy,
@@ -59,8 +61,13 @@ class FlMenuItem<T> extends PopupMenuEntry<T> {
 class _FlMenuItemState<T> extends State<FlMenuItem<T>> {
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       height: 40,
+      color: WidgetStateColor.resolveWith((states) {
+        return (states.contains(WidgetState.hovered))
+            ? Theme.of(context).colorScheme.surface.withOpacity(0.1)
+            : Theme.of(context).colorScheme.surface;
+      }),
       child: GestureDetector(
         onTap: () => Navigator.pop(context, widget.value),
         child: Padding(
@@ -68,13 +75,12 @@ class _FlMenuItemState<T> extends State<FlMenuItem<T>> {
           child: Row(
             children: [
               if (widget.icon != null) ...[
-                const SizedBox(width: 8),
                 Icon(
                   widget.icon,
                   color: widget.iconColor ??
                       Theme.of(context).colorScheme.onSurface,
                 ),
-                const SizedBox(width: 8),
+                const SizedBox(width: FlTheme.spacing),
               ],
               Text(
                 widget.text,
