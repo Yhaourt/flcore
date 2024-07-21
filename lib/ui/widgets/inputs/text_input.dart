@@ -4,10 +4,10 @@ import 'package:flcore/ui/theme/fl_theme.dart';
 class TextInput extends StatefulWidget {
   const TextInput({
     super.key,
-    required this.controller,
+    this.controller,
+    this.onChanged,
     this.hintText,
     this.value,
-    this.onChanged,
     this.prefixIcon,
     this.onPrefixIconPressed,
     this.suffixIcon,
@@ -17,10 +17,10 @@ class TextInput extends StatefulWidget {
     this.obscureText = false,
   });
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
+  final Function(String)? onChanged;
   final String? hintText;
   final String? value;
-  final Function(String)? onChanged;
   final IconData? prefixIcon;
   final VoidCallback? onPrefixIconPressed;
   final IconData? suffixIcon;
@@ -36,7 +36,7 @@ class TextInput extends StatefulWidget {
 class _TextInputState extends State<TextInput> {
   @override
   void initState() {
-    widget.controller.text = widget.value ?? '';
+    widget.controller?.text = widget.value ?? '';
     super.initState();
   }
 
@@ -48,6 +48,8 @@ class _TextInputState extends State<TextInput> {
       obscureText: widget.obscureText,
       onChanged: widget.onChanged,
       decoration: InputDecoration(
+        filled: true,
+        fillColor: Theme.of(context).colorScheme.surfaceContainer,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 13,
           horizontal: 15,

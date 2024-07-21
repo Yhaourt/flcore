@@ -9,12 +9,11 @@ void showFlMenu<T>(
 }) {
   showMenu(
     context: context,
-    surfaceTintColor: Theme.of(context).colorScheme.surface,
     elevation: 1,
+    color: Theme.of(context).colorScheme.surface,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(FlTheme.borderRadiusSm),
     ),
-    // no animation
     popUpAnimationStyle: AnimationStyle.noAnimation,
     position: RelativeRect.fromLTRB(
       position.dx,
@@ -69,7 +68,7 @@ class _FlMenuItemState<T> extends State<FlMenuItem<T>> {
       child: Container(
         height: 40,
         color: _isHovered
-            ? Theme.of(context).colorScheme.surface.withOpacity(0.1)
+            ? Theme.of(context).colorScheme.surfaceContainer
             : Theme.of(context).colorScheme.surface,
         child: GestureDetector(
           onTap: () => Navigator.pop(context, widget.value),

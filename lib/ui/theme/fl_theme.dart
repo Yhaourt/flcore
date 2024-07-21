@@ -31,7 +31,7 @@ class FlTheme {
     return _baseTheme.copyWith(
       brightness: colorScheme.brightness,
       colorScheme: colorScheme,
-      scaffoldBackgroundColor: Colors.white,
+      scaffoldBackgroundColor: colorScheme.surface,
       textTheme: _baseTheme.textTheme.apply(
         bodyColor: colorScheme.onSurface,
         displayColor: colorScheme.onSurface,
@@ -47,7 +47,7 @@ class FlTheme {
     return _baseTheme.copyWith(
       brightness: colorScheme.brightness,
       colorScheme: colorScheme,
-      scaffoldBackgroundColor: Colors.grey[900],
+      scaffoldBackgroundColor: colorScheme.surface,
       textTheme: _baseTheme.textTheme.apply(
         bodyColor: colorScheme.onSurface,
         displayColor: colorScheme.onSurface,
@@ -66,7 +66,8 @@ class FlTheme {
         onSecondary: Colors.white,
         tertiary: Colors.grey[100]!,
         onTertiary: Colors.grey[900]!,
-        surface: Colors.grey[200]!,
+        surface: Colors.white,
+        surfaceContainer: Colors.grey[200]!,
         onSurface: Colors.grey[900]!,
         error: Colors.red[400]!,
         onError: Colors.white,
@@ -81,6 +82,7 @@ class FlTheme {
         tertiary: Colors.grey[900]!,
         onTertiary: Colors.grey[100]!,
         surface: Colors.grey[900]!,
+        surfaceContainer: Colors.grey[800]!,
         onSurface: Colors.grey[100]!,
         error: Colors.red[400]!,
         onError: Colors.white,
