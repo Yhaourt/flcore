@@ -59,37 +59,41 @@ class FlMenuItem<T> extends PopupMenuEntry<T> {
 }
 
 class _FlMenuItemState<T> extends State<FlMenuItem<T>> {
+  bool _isHovered = false;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 40,
-      color: WidgetStateColor.resolveWith((states) {
-        return (states.contains(WidgetState.hovered))
-            ? Theme.of(context).colorScheme.primary
-            : Theme.of(context).colorScheme.secondary;
-      }),
-      child: GestureDetector(
-        onTap: () => Navigator.pop(context, widget.value),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: FlTheme.padding),
-          child: Row(
-            children: [
-              if (widget.icon != null) ...[
-                Icon(
-                  widget.icon,
-                  color: widget.iconColor ??
-                      Theme.of(context).colorScheme.onSurface,
+    return MouseRegion(
+      onEnter: (_) => setState(() => _isHovered = true),
+      onExit: (_) => setState(() => _isHovered = false),
+      child: Container(
+        height: 40,
+        color: _isHovered
+            ? Theme.of(context).colorScheme.surface.withOpacity(0.1)
+            : Theme.of(context).colorScheme.surface,
+        child: GestureDetector(
+          onTap: () => Navigator.pop(context, widget.value),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: FlTheme.padding),
+            child: Row(
+              children: [
+                if (widget.icon != null) ...[
+                  Icon(
+                    widget.icon,
+                    color: widget.iconColor ??
+                        Theme.of(context).colorScheme.onSurface,
+                  ),
+                  const SizedBox(width: FlTheme.spacing),
+                ],
+                Text(
+                  widget.text,
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: widget.textColor ??
+                            Theme.of(context).colorScheme.onSurface,
+                      ),
                 ),
-                const SizedBox(width: FlTheme.spacing),
               ],
-              Text(
-                widget.text,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                      color: widget.textColor ??
-                          Theme.of(context).colorScheme.onSurface,
-                    ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
