@@ -23,6 +23,7 @@ class SearchInput extends StatelessWidget {
     return TextInput(
       controller: controller,
       onChanged: onChanged,
+      textInputStyle: TextInputStyle.noBorder,
       hintText: hintText,
       prefixIcon: Icons.search,
     );
