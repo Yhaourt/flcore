@@ -65,7 +65,7 @@ class _FlMenuItemState<T> extends State<FlMenuItem<T>> {
       height: 40,
       color: WidgetStateColor.resolveWith((states) {
         return (states.contains(WidgetState.hovered))
-            ? Theme.of(context).colorScheme.surface.withOpacity(0.1)
+            ? Theme.of(context).colorScheme.primary
             : Theme.of(context).colorScheme.surface;
       }),
       child: GestureDetector(
