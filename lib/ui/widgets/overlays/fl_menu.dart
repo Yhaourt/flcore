@@ -66,7 +66,7 @@ class _FlMenuItemState<T> extends State<FlMenuItem<T>> {
       color: WidgetStateColor.resolveWith((states) {
         return (states.contains(WidgetState.hovered))
             ? Theme.of(context).colorScheme.primary
-            : Theme.of(context).colorScheme.surface;
+            : Theme.of(context).colorScheme.secondary;
       }),
       child: GestureDetector(
         onTap: () => Navigator.pop(context, widget.value),
