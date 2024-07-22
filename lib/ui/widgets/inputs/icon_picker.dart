@@ -39,8 +39,8 @@ class _IconPickerState extends State<IconPicker> {
         Row(
           children: [
             Container(
-              height: 40,
-              width: 40,
+              height: 50,
+              width: 50,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primary,
                 borderRadius: BorderRadius.circular(FlTheme.borderRadius),
