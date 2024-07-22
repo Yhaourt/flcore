@@ -24,7 +24,12 @@ class FlDrawer extends StatelessWidget {
       backgroundColor: Theme.of(context).colorScheme.surface,
       elevation: 0,
       child: Padding(
-        padding: const EdgeInsets.all(FlTheme.padding),
+        padding: EdgeInsets.fromLTRB(
+          FlTheme.paddingLg,
+          FlTheme.paddingLg + MediaQuery.of(context).padding.top,
+          FlTheme.paddingLg,
+          FlTheme.paddingLg,
+        ),
         child: child,
       ),
     );
