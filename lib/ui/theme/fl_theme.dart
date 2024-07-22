@@ -68,10 +68,10 @@ class FlTheme {
         secondary: secondaryColor,
         onSecondary: Colors.white,
         tertiary: Colors.grey[100]!,
-        onTertiary: Colors.grey[800]!,
+        onTertiary: Colors.grey[900]!,
         surface: Colors.white,
         surfaceContainer: Colors.grey[200]!,
-        onSurface: Colors.grey[800]!,
+        onSurface: Colors.grey[900]!,
         error: Colors.red[400]!,
         onError: Colors.white,
       );
