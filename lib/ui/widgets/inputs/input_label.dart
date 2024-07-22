@@ -15,7 +15,7 @@ class InputLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        bottom: 3,
+        bottom: FlTheme.spacingSm,
       ),
       child: Row(
         children: [
@@ -31,7 +31,7 @@ class InputLabel extends StatelessWidget {
                 ),
               ),
             ),
-          SizedBox(width: info != null ? FlTheme.spacing : 0),
+          SizedBox(width: info != null ? FlTheme.spacingSm : 0),
           Text(
             label.toUpperCase(),
             style: Theme.of(context).textTheme.bodyMedium,

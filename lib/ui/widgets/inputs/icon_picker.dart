@@ -39,7 +39,8 @@ class _IconPickerState extends State<IconPicker> {
         Row(
           children: [
             Container(
-              padding: EdgeInsets.all(FlTheme.padding),
+              height: 40,
+              width: 40,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primary,
                 borderRadius: BorderRadius.circular(FlTheme.borderRadius),
@@ -73,7 +74,7 @@ class _IconPickerState extends State<IconPicker> {
         Container(
           padding: EdgeInsets.all(FlTheme.padding),
           decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surface,
+            color: Theme.of(context).colorScheme.surfaceContainer,
             borderRadius: BorderRadius.circular(FlTheme.borderRadius),
           ),
           child: filteredIcons == null
