@@ -34,7 +34,7 @@ class Button extends StatelessWidget {
         onPressed: onPressed,
         child: (isLoading)
             ? Loader(
-                size: LoaderSize.small,
+                size: LoaderSize.sm,
                 color: Theme.of(context).colorScheme.onPrimary)
             : Text(
                 text,

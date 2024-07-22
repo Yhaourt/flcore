@@ -1,3 +1,4 @@
+import 'package:flcore/flcore.dart';
 import 'package:flcore/ui/theme/fl_theme.dart';
 import 'package:flcore/ui/widgets/inputs/search_input.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class _IconPickerState extends State<IconPicker> {
   void initState() {
     setState(() {
       selectedIcon = widget.currentIcon ?? widget.defaultIcon;
+      filteredIcons = widget.icons.take(30).toList();
     });
     super.initState();
   }
@@ -80,7 +82,11 @@ class _IconPickerState extends State<IconPicker> {
             borderRadius: BorderRadius.circular(FlTheme.borderRadius),
           ),
           child: filteredIcons == null
-              ? const Center(child: CircularProgressIndicator())
+              ? const Center(
+                  child: Loader(
+                    size: LoaderSize.sm,
+                  ),
+                )
               : GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
