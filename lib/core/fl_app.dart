@@ -8,7 +8,7 @@ class FlApp extends StatelessWidget {
     super.key,
     required this.title,
     required this.router,
-    this.theme = const FlTheme(),
+    required this.theme,
     this.providers = const <BlocProvider>[],
   });
 

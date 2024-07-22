@@ -2,29 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class FlTheme {
-  const FlTheme({
+  FlTheme({
+    final String? fontFamily,
     this.primaryColor = Colors.green,
     this.secondaryColor = Colors.lime,
-  });
+  }) {
+    _baseTheme = ThemeData(
+      fontFamily: fontFamily ?? GoogleFonts.poppins().fontFamily,
+      iconTheme: const IconThemeData(
+        size: 24,
+      ),
+      appBarTheme: const AppBarTheme(
+        backgroundColor: Colors.transparent,
+        scrolledUnderElevation: 0,
+        elevation: 0,
+      ),
+      dialogTheme: const DialogTheme(
+        backgroundColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+      ),
+    );
+  }
+
+  late final ThemeData _baseTheme;
 
   final Color primaryColor;
   final Color secondaryColor;
-
-  static final ThemeData _baseTheme = ThemeData(
-    fontFamily: GoogleFonts.poppins().fontFamily,
-    iconTheme: const IconThemeData(
-      size: 24,
-    ),
-    appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.transparent,
-      scrolledUnderElevation: 0,
-      elevation: 0,
-    ),
-    dialogTheme: const DialogTheme(
-      backgroundColor: Colors.transparent,
-      surfaceTintColor: Colors.transparent,
-    ),
-  );
 
   ThemeData lightTheme() {
     final ColorScheme colorScheme = _lightColorScheme();
