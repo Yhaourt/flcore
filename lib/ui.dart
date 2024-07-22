@@ -9,7 +9,7 @@ export 'ui/widgets/buttons/link_button.dart';
 // Path: ui/widgets/inputs
 export 'ui/widgets//inputs/color_picker.dart';
 export 'ui/widgets//inputs/email_input.dart';
-export 'ui/widgets//inputs/icon_picker.dart';
+export 'ui/widgets//inputs/network_icon_picker.dart';
 export 'ui/widgets//inputs/password_input.dart';
 export 'ui/widgets//inputs/search_input.dart';
 export 'ui/widgets//inputs/text_input.dart';

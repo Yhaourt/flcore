@@ -3,33 +3,31 @@ import 'package:flcore/ui/widgets/inputs/search_input.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-class IconPicker extends StatefulWidget {
-  const IconPicker({
+class NetworkIconPicker extends StatefulWidget {
+  const NetworkIconPicker({
     super.key,
-    required this.icons,
-    required this.defaultIcon,
     required this.onIconPicked,
     this.currentIcon,
   });
 
-  final List<IconData> icons;
-  final IconData defaultIcon;
   final void Function(IconData) onIconPicked;
   final IconData? currentIcon;
 
   @override
-  State<IconPicker> createState() => _IconPickerState();
+  State<NetworkIconPicker> createState() => _NetworkIconPickerState();
 }
 
-class _IconPickerState extends State<IconPicker> {
+class _NetworkIconPickerState extends State<NetworkIconPicker> {
   Map<String, int> map = {};
+  List<IconData>? icons;
   List<IconData>? filteredIcons;
-  IconData? selectedIcon;
+  IconData selectedIcon = Icons.category;
 
   @override
   void initState() {
+    fetchIcons();
     setState(() {
-      selectedIcon = widget.currentIcon ?? widget.defaultIcon;
+      selectedIcon = widget.currentIcon ?? Icons.category;
     });
     super.initState();
   }
@@ -60,8 +58,8 @@ class _IconPickerState extends State<IconPicker> {
                 hintText: 'Rechercher ...',
                 onChanged: (value) {
                   setState(() {
-                    filteredIcons = widget.icons
-                        .where((icon) => map.entries.any((entry) =>
+                    filteredIcons = icons
+                        ?.where((icon) => map.entries.any((entry) =>
                             entry.key.contains(value.toLowerCase()) &&
                             entry.value == icon.codePoint))
                         .take(30)
@@ -113,5 +111,33 @@ class _IconPickerState extends State<IconPicker> {
         color: Theme.of(context).colorScheme.onSurface,
       ),
     );
+  }
+
+  Future<void> fetchIcons() async {
+    const String endpoint =
+        'https://raw.githubusercontent.com/google/material-design-icons/master/font/MaterialIcons-Regular.codepoints';
+
+    final response = await http.get(Uri.parse(endpoint));
+
+    if (response.statusCode == 200) {
+      final String responseBody = response.body;
+      final List<String> lines =
+          responseBody.split('\n').where((line) => line.isNotEmpty).toList();
+      final List<IconData> fetchedIcons = lines.map((line) {
+        final List<String> parts = line.split(' ');
+        final String name = parts[0];
+        final String codePoint = parts[1];
+        map[name] = int.parse(codePoint, radix: 16);
+        final int codePointInt = int.parse(codePoint, radix: 16);
+        return IconData(codePointInt, fontFamily: 'MaterialIcons');
+      }).toList();
+
+      setState(() {
+        icons = fetchedIcons;
+        filteredIcons = fetchedIcons.take(30).toList();
+      });
+    } else {
+      throw Exception('Failed to load icons');
+    }
   }
 }
