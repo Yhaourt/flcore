@@ -5,9 +5,11 @@ class PageLayout extends StatelessWidget {
   const PageLayout({
     super.key,
     required this.child,
+    this.padding,
   });
 
   final Widget child;
+  final EdgeInsets? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -15,12 +17,7 @@ class PageLayout extends StatelessWidget {
       children: [
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(
-              FlTheme.paddingLg,
-              0,
-              FlTheme.paddingLg,
-              FlTheme.paddingLg,
-            ),
+            padding: padding ?? const EdgeInsets.all(FlTheme.paddingLg),
             child: child,
           ),
         ),
