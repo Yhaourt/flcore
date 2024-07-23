@@ -44,7 +44,10 @@ class _DotsPaginationState extends State<DotsPagination> {
             },
             child: Container(
               color: Colors.transparent,
-              padding: const EdgeInsets.all(FlTheme.padding),
+              padding: const EdgeInsets.symmetric(
+                horizontal: FlTheme.padding,
+                vertical: FlTheme.paddingSm,
+              ),
               child: CircleAvatar(
                 radius: 5,
                 backgroundColor: index == currentPage

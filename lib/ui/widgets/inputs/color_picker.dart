@@ -104,6 +104,7 @@ class _ColorPickerState extends State<ColorPicker> {
             ? Icon(
                 Icons.check,
                 color: Theme.of(context).colorScheme.onPrimary,
+                size: 15,
               )
             : null,
       ),

@@ -128,7 +128,6 @@ class _IconPickerState extends State<IconPicker> {
                   crossAxisSpacing: 5,
                 ),
               ),
-              const SizedBox(height: FlTheme.spacing),
               DotsPagination(
                 pageCount: (widget._pickerIcons.length / 30).ceil(),
                 onPageChange: (index) {
@@ -163,5 +162,5 @@ class _IconPickerState extends State<IconPicker> {
 }
 
 class IconPickerController extends ValueNotifier<IconData?> {
-  IconPickerController({IconData? value}) : super(value);
+  IconPickerController({IconData? icon}) : super(icon);
 }
