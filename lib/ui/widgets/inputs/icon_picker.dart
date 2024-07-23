@@ -6,18 +6,19 @@ import 'package:flcore/flcore.dart';
 class IconPicker extends StatefulWidget {
   IconPicker({
     super.key,
-    required this.controller,
+    final IconPickerController? controller,
     required final List<IconPack> packs,
     final IconData? defaultIcon,
     required this.onIconPicked,
   }) {
     assert(packs.isNotEmpty);
+    _controller = controller ?? IconPickerController();
     _iconMap = {for (var pack in packs) ...pack.pack};
     _pickerIcons = _iconMap.values.toSet().toList();
     _defaultIcon = defaultIcon ?? _pickerIcons.first;
   }
 
-  final IconPickerController controller;
+  late final IconPickerController _controller;
   late final List<IconData> _pickerIcons;
   late final Map<String, IconData> _iconMap;
   late final IconData? _defaultIcon;
@@ -34,29 +35,29 @@ class _IconPickerState extends State<IconPicker> {
   @override
   void initState() {
     super.initState();
-    selectedIcon = (widget.controller.value ?? widget._defaultIcon)!;
+    selectedIcon = (widget._controller.value ?? widget._defaultIcon)!;
     filteredIcons = widget._pickerIcons.take(30).toList();
-    widget.controller.addListener(_updateState);
+    widget._controller.addListener(_updateState);
   }
 
   @override
   void didUpdateWidget(covariant IconPicker oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.controller != widget.controller) {
-      oldWidget.controller.removeListener(_updateState);
-      widget.controller.addListener(_updateState);
+    if (oldWidget._controller != widget._controller) {
+      oldWidget._controller.removeListener(_updateState);
+      widget._controller.addListener(_updateState);
     }
   }
 
   @override
   void dispose() {
-    widget.controller.removeListener(_updateState);
+    widget._controller.removeListener(_updateState);
     super.dispose();
   }
 
   void _updateState() {
     setState(() {
-      selectedIcon = (widget.controller.value ?? widget._defaultIcon)!;
+      selectedIcon = (widget._controller.value ?? widget._defaultIcon)!;
     });
   }
 
@@ -149,7 +150,7 @@ class _IconPickerState extends State<IconPicker> {
       onTap: () {
         setState(() {
           selectedIcon = icon;
-          widget.controller.value = icon;
+          widget._controller.value = icon;
           widget.onIconPicked(icon);
         });
       },
