@@ -32,6 +32,9 @@ class _IconPickerState extends State<IconPicker> {
     setState(() {
       selectedIcon = widget._defaultIcon;
       filteredIcons = widget._pickerIcons.take(30).toList();
+      for (var icon in widget._pickerIcons) {
+        map[icon.toString().toLowerCase()] = icon.codePoint;
+      }
     });
     super.initState();
   }
