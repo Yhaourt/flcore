@@ -1,20 +1,22 @@
 import 'package:flcore/ui/widgets/inputs/dots_pagination.dart';
+import 'package:flcore/ui/widgets/inputs/icon_packs.dart';
 import 'package:flutter/material.dart';
 import 'package:flcore/flcore.dart';
 
 class IconPicker extends StatefulWidget {
   IconPicker({
     super.key,
-    final List<IconData> icons = const [],
-    final List<List<IconData>> packs = const [],
+    final List<IconPack> packs = const [],
     final IconData? defaultIcon,
     required this.onIconPicked,
   }) {
-    _pickerIcons = [...icons, ...packs.expand((element) => element)];
+    _iconMap = {for (var pack in packs) ...pack.pack};
+    _pickerIcons = _iconMap.values.toSet().toList();
     _defaultIcon = defaultIcon ?? _pickerIcons.first;
   }
 
   late final List<IconData> _pickerIcons;
+  late final Map<String, IconData> _iconMap;
   late final IconData? _defaultIcon;
   final void Function(IconData) onIconPicked;
 
@@ -23,20 +25,16 @@ class IconPicker extends StatefulWidget {
 }
 
 class _IconPickerState extends State<IconPicker> {
-  Map<String, int> map = {};
   List<IconData> filteredIcons = [];
   IconData? selectedIcon;
 
   @override
   void initState() {
+    super.initState();
     setState(() {
       selectedIcon = widget._defaultIcon;
       filteredIcons = widget._pickerIcons.take(30).toList();
-      for (var icon in widget._pickerIcons) {
-        map[icon.toString().toLowerCase()] = icon.codePoint;
-      }
     });
-    super.initState();
   }
 
   @override
@@ -66,9 +64,14 @@ class _IconPickerState extends State<IconPicker> {
                 onChanged: (value) {
                   setState(() {
                     filteredIcons = widget._pickerIcons
-                        .where((icon) => map.entries.any((entry) =>
-                            entry.key.contains(value.toLowerCase()) &&
-                            entry.value == icon.codePoint))
+                        .where((icon) {
+                          final iconName = widget._iconMap.keys.firstWhere(
+                              (name) => widget._iconMap[name] == icon,
+                              orElse: () => '');
+                          return iconName
+                              .toLowerCase()
+                              .contains(value.toLowerCase());
+                        })
                         .take(30)
                         .toList();
                   });
@@ -123,8 +126,8 @@ class _IconPickerState extends State<IconPicker> {
       onTap: () {
         setState(() {
           selectedIcon = icon;
+          widget.onIconPicked(icon);
         });
-        widget.onIconPicked(icon);
       },
       child: Icon(
         icon,
