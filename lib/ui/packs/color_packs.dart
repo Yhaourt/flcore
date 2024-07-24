@@ -11,32 +11,29 @@ class ColorPack {
 }
 
 class ColorPacks {
-  static final ColorPack completePack = ColorPack(
-    name: 'Complete Pack',
-    pack: <Color>[
-      ...blackPack.pack,
-      ...whitePack.pack,
-      ...pinkPack.pack,
-      ...redPack.pack,
-      ...deepOrangePack.pack,
-      ...orangePack.pack,
-      ...amberPack.pack,
-      ...yellowPack.pack,
-      ...limePack.pack,
-      ...lightGreenPack.pack,
-      ...greenPack.pack,
-      ...tealPack.pack,
-      ...cyanPack.pack,
-      ...lightBluePack.pack,
-      ...bluePack.pack,
-      ...indigoPack.pack,
-      ...purplePack.pack,
-      ...deepPurplePack.pack,
-      ...blueGreyPack.pack,
-      ...brownPack.pack,
-      ...greyPack.pack,
-    ],
-  );
+  static final List<ColorPack> allPacks = <ColorPack>[
+    blackPack,
+    whitePack,
+    pinkPack,
+    redPack,
+    deepOrangePack,
+    orangePack,
+    amberPack,
+    yellowPack,
+    limePack,
+    lightGreenPack,
+    greenPack,
+    tealPack,
+    cyanPack,
+    lightBluePack,
+    bluePack,
+    indigoPack,
+    purplePack,
+    deepPurplePack,
+    blueGreyPack,
+    brownPack,
+    greyPack,
+  ];
 
   static final ColorPack blackPack = ColorPack(
     name: 'Black Pack',
