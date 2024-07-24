@@ -1,28 +1,60 @@
 import 'package:flutter/material.dart';
 
-List<List<Color>> colorPalettes() => <List<Color>>[
-      pinkPalette(),
-      redPalette(),
-      deepOrangePalette(),
-      orangePalette(),
-      amberPalette(),
-      yellowPalette(),
-      limePalette(),
-      lightGreenPalette(),
-      greenPalette(),
-      tealPalette(),
-      cyanPalette(),
-      lightBluePalette(),
-      bluePalette(),
-      indigoPalette(),
-      purplePalette(),
-      deepPurplePalette(),
-      blueGreyPalette(),
-      brownPalette(),
-      greyPalette(),
-    ];
+class ColorPack {
+  ColorPack({
+    required this.name,
+    required this.pack,
+  });
 
-List<Color> pinkPalette() => <Color>[
+  final String name;
+  final List<Color> pack;
+}
+
+class ColorPacks {
+  static final ColorPack completePack = ColorPack(
+    name: 'Complete Pack',
+    pack: <Color>[
+      ...blackPack.pack,
+      ...whitePack.pack,
+      ...pinkPack.pack,
+      ...redPack.pack,
+      ...deepOrangePack.pack,
+      ...orangePack.pack,
+      ...amberPack.pack,
+      ...yellowPack.pack,
+      ...limePack.pack,
+      ...lightGreenPack.pack,
+      ...greenPack.pack,
+      ...tealPack.pack,
+      ...cyanPack.pack,
+      ...lightBluePack.pack,
+      ...bluePack.pack,
+      ...indigoPack.pack,
+      ...purplePack.pack,
+      ...deepPurplePack.pack,
+      ...blueGreyPack.pack,
+      ...brownPack.pack,
+      ...greyPack.pack,
+    ],
+  );
+
+  static final ColorPack blackPack = ColorPack(
+    name: 'Black Pack',
+    pack: <Color>[
+      Colors.black,
+    ],
+  );
+
+  static final ColorPack whitePack = ColorPack(
+    name: 'White Pack',
+    pack: <Color>[
+      Colors.white,
+    ],
+  );
+
+  static final ColorPack pinkPack = ColorPack(
+    name: 'Pink Pack',
+    pack: <Color>[
       Colors.pink[50]!,
       Colors.pink[100]!,
       Colors.pink[200]!,
@@ -33,9 +65,12 @@ List<Color> pinkPalette() => <Color>[
       Colors.pink[700]!,
       Colors.pink[800]!,
       Colors.pink[900]!,
-    ];
+    ],
+  );
 
-List<Color> redPalette() => <Color>[
+  static final ColorPack redPack = ColorPack(
+    name: 'Red Pack',
+    pack: <Color>[
       Colors.red[50]!,
       Colors.red[100]!,
       Colors.red[200]!,
@@ -46,9 +81,12 @@ List<Color> redPalette() => <Color>[
       Colors.red[700]!,
       Colors.red[800]!,
       Colors.red[900]!,
-    ];
+    ],
+  );
 
-List<Color> deepOrangePalette() => <Color>[
+  static final ColorPack deepOrangePack = ColorPack(
+    name: 'Deep Orange Pack',
+    pack: <Color>[
       Colors.deepOrange[50]!,
       Colors.deepOrange[100]!,
       Colors.deepOrange[200]!,
@@ -59,9 +97,12 @@ List<Color> deepOrangePalette() => <Color>[
       Colors.deepOrange[700]!,
       Colors.deepOrange[800]!,
       Colors.deepOrange[900]!,
-    ];
+    ],
+  );
 
-List<Color> orangePalette() => <Color>[
+  static final ColorPack orangePack = ColorPack(
+    name: 'Orange Pack',
+    pack: <Color>[
       Colors.orange[50]!,
       Colors.orange[100]!,
       Colors.orange[200]!,
@@ -72,9 +113,12 @@ List<Color> orangePalette() => <Color>[
       Colors.orange[700]!,
       Colors.orange[800]!,
       Colors.orange[900]!,
-    ];
+    ],
+  );
 
-List<Color> amberPalette() => <Color>[
+  static final ColorPack amberPack = ColorPack(
+    name: 'Amber Pack',
+    pack: <Color>[
       Colors.amber[50]!,
       Colors.amber[100]!,
       Colors.amber[200]!,
@@ -85,9 +129,12 @@ List<Color> amberPalette() => <Color>[
       Colors.amber[700]!,
       Colors.amber[800]!,
       Colors.amber[900]!,
-    ];
+    ],
+  );
 
-List<Color> yellowPalette() => <Color>[
+  static final ColorPack yellowPack = ColorPack(
+    name: 'Yellow Pack',
+    pack: <Color>[
       Colors.yellow[50]!,
       Colors.yellow[100]!,
       Colors.yellow[200]!,
@@ -98,9 +145,12 @@ List<Color> yellowPalette() => <Color>[
       Colors.yellow[700]!,
       Colors.yellow[800]!,
       Colors.yellow[900]!,
-    ];
+    ],
+  );
 
-List<Color> limePalette() => <Color>[
+  static final ColorPack limePack = ColorPack(
+    name: 'Lime Pack',
+    pack: <Color>[
       Colors.lime[50]!,
       Colors.lime[100]!,
       Colors.lime[200]!,
@@ -111,9 +161,12 @@ List<Color> limePalette() => <Color>[
       Colors.lime[700]!,
       Colors.lime[800]!,
       Colors.lime[900]!,
-    ];
+    ],
+  );
 
-List<Color> lightGreenPalette() => <Color>[
+  static final ColorPack lightGreenPack = ColorPack(
+    name: 'Light Green Pack',
+    pack: <Color>[
       Colors.lightGreen[50]!,
       Colors.lightGreen[100]!,
       Colors.lightGreen[200]!,
@@ -124,9 +177,12 @@ List<Color> lightGreenPalette() => <Color>[
       Colors.lightGreen[700]!,
       Colors.lightGreen[800]!,
       Colors.lightGreen[900]!,
-    ];
+    ],
+  );
 
-List<Color> greenPalette() => <Color>[
+  static final ColorPack greenPack = ColorPack(
+    name: 'Green Pack',
+    pack: <Color>[
       Colors.green[50]!,
       Colors.green[100]!,
       Colors.green[200]!,
@@ -137,9 +193,12 @@ List<Color> greenPalette() => <Color>[
       Colors.green[700]!,
       Colors.green[800]!,
       Colors.green[900]!,
-    ];
+    ],
+  );
 
-List<Color> tealPalette() => <Color>[
+  static final ColorPack tealPack = ColorPack(
+    name: 'Teal Pack',
+    pack: <Color>[
       Colors.teal[50]!,
       Colors.teal[100]!,
       Colors.teal[200]!,
@@ -150,9 +209,12 @@ List<Color> tealPalette() => <Color>[
       Colors.teal[700]!,
       Colors.teal[800]!,
       Colors.teal[900]!,
-    ];
+    ],
+  );
 
-List<Color> cyanPalette() => <Color>[
+  static final ColorPack cyanPack = ColorPack(
+    name: 'Cyan Pack',
+    pack: <Color>[
       Colors.cyan[50]!,
       Colors.cyan[100]!,
       Colors.cyan[200]!,
@@ -163,9 +225,12 @@ List<Color> cyanPalette() => <Color>[
       Colors.cyan[700]!,
       Colors.cyan[800]!,
       Colors.cyan[900]!,
-    ];
+    ],
+  );
 
-List<Color> lightBluePalette() => <Color>[
+  static final ColorPack lightBluePack = ColorPack(
+    name: 'Light Blue Pack',
+    pack: <Color>[
       Colors.lightBlue[50]!,
       Colors.lightBlue[100]!,
       Colors.lightBlue[200]!,
@@ -176,9 +241,12 @@ List<Color> lightBluePalette() => <Color>[
       Colors.lightBlue[700]!,
       Colors.lightBlue[800]!,
       Colors.lightBlue[900]!,
-    ];
+    ],
+  );
 
-List<Color> bluePalette() => <Color>[
+  static final ColorPack bluePack = ColorPack(
+    name: 'Blue Pack',
+    pack: <Color>[
       Colors.blue[50]!,
       Colors.blue[100]!,
       Colors.blue[200]!,
@@ -189,9 +257,12 @@ List<Color> bluePalette() => <Color>[
       Colors.blue[700]!,
       Colors.blue[800]!,
       Colors.blue[900]!,
-    ];
+    ],
+  );
 
-List<Color> indigoPalette() => <Color>[
+  static final ColorPack indigoPack = ColorPack(
+    name: 'Indigo Pack',
+    pack: <Color>[
       Colors.indigo[50]!,
       Colors.indigo[100]!,
       Colors.indigo[200]!,
@@ -202,9 +273,12 @@ List<Color> indigoPalette() => <Color>[
       Colors.indigo[700]!,
       Colors.indigo[800]!,
       Colors.indigo[900]!,
-    ];
+    ],
+  );
 
-List<Color> purplePalette() => <Color>[
+  static final ColorPack purplePack = ColorPack(
+    name: 'Purple Pack',
+    pack: <Color>[
       Colors.purple[50]!,
       Colors.purple[100]!,
       Colors.purple[200]!,
@@ -215,9 +289,12 @@ List<Color> purplePalette() => <Color>[
       Colors.purple[700]!,
       Colors.purple[800]!,
       Colors.purple[900]!,
-    ];
+    ],
+  );
 
-List<Color> deepPurplePalette() => <Color>[
+  static final ColorPack deepPurplePack = ColorPack(
+    name: 'Deep Purple Pack',
+    pack: <Color>[
       Colors.deepPurple[50]!,
       Colors.deepPurple[100]!,
       Colors.deepPurple[200]!,
@@ -228,9 +305,12 @@ List<Color> deepPurplePalette() => <Color>[
       Colors.deepPurple[700]!,
       Colors.deepPurple[800]!,
       Colors.deepPurple[900]!,
-    ];
+    ],
+  );
 
-List<Color> blueGreyPalette() => <Color>[
+  static final ColorPack blueGreyPack = ColorPack(
+    name: 'Blue Grey Pack',
+    pack: <Color>[
       Colors.blueGrey[50]!,
       Colors.blueGrey[100]!,
       Colors.blueGrey[200]!,
@@ -241,9 +321,12 @@ List<Color> blueGreyPalette() => <Color>[
       Colors.blueGrey[700]!,
       Colors.blueGrey[800]!,
       Colors.blueGrey[900]!,
-    ];
+    ],
+  );
 
-List<Color> brownPalette() => <Color>[
+  static final ColorPack brownPack = ColorPack(
+    name: 'Brown Pack',
+    pack: <Color>[
       Colors.brown[50]!,
       Colors.brown[100]!,
       Colors.brown[200]!,
@@ -254,9 +337,12 @@ List<Color> brownPalette() => <Color>[
       Colors.brown[700]!,
       Colors.brown[800]!,
       Colors.brown[900]!,
-    ];
+    ],
+  );
 
-List<Color> greyPalette() => <Color>[
+  static final ColorPack greyPack = ColorPack(
+    name: 'Grey Pack',
+    pack: <Color>[
       Colors.grey[50]!,
       Colors.grey[100]!,
       Colors.grey[200]!,
@@ -267,4 +353,6 @@ List<Color> greyPalette() => <Color>[
       Colors.grey[700]!,
       Colors.grey[800]!,
       Colors.grey[900]!,
-    ];
+    ],
+  );
+}

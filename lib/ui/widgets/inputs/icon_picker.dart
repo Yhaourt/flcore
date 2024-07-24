@@ -1,6 +1,6 @@
 import 'package:flcore/ui.dart';
+import 'package:flcore/ui/packs/icon_packs.dart';
 import 'package:flcore/ui/widgets/inputs/dots_pagination.dart';
-import 'package:flcore/ui/widgets/inputs/icon_packs.dart';
 import 'package:flutter/material.dart';
 import 'package:flcore/flcore.dart';
 
