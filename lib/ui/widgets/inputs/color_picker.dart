@@ -21,15 +21,13 @@ class ColorPicker extends StatefulWidget {
 class _ColorPickerState extends State<ColorPicker> {
   final List<List<Color>> palettes = colorPalettes();
   int currentPaletteIndex = 0;
-  late Color selectedColor;
 
   @override
   void initState() {
     super.initState();
-    selectedColor =
-        widget._controller.value ?? palettes[currentPaletteIndex][4];
-    currentPaletteIndex =
-        palettes.indexWhere((palette) => palette.contains(selectedColor));
+    widget._controller.value ??= palettes[currentPaletteIndex][4];
+    currentPaletteIndex = palettes
+        .indexWhere((palette) => palette.contains(widget._controller.value));
     widget._controller.addListener(_updateState);
   }
 
@@ -49,10 +47,7 @@ class _ColorPickerState extends State<ColorPicker> {
   }
 
   void _updateState() {
-    setState(() {
-      selectedColor =
-          widget._controller.value ?? palettes[currentPaletteIndex][4];
-    });
+    setState(() {});
   }
 
   @override
@@ -67,7 +62,7 @@ class _ColorPickerState extends State<ColorPicker> {
           itemBuilder: (context, index) {
             return _buildBox(
               color: palettes[index][4],
-              checked: palettes[index][4] == selectedColor,
+              checked: palettes[index][4] == widget._controller.value,
               onTap: (Color color) {
                 setState(() {
                   currentPaletteIndex = index;
@@ -90,10 +85,10 @@ class _ColorPickerState extends State<ColorPicker> {
           itemBuilder: (context, index) {
             return _buildBox(
               color: palettes[currentPaletteIndex][index],
-              checked: palettes[currentPaletteIndex][index] == selectedColor,
+              checked: palettes[currentPaletteIndex][index] ==
+                  widget._controller.value,
               onTap: (Color color) {
                 setState(() {
-                  selectedColor = color;
                   widget._controller.value = color;
                   widget.onColorPicked?.call(color);
                 });

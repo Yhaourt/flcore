@@ -30,12 +30,10 @@ class IconPicker extends StatefulWidget {
 
 class _IconPickerState extends State<IconPicker> {
   List<IconData> filteredIcons = [];
-  late IconData selectedIcon;
 
   @override
   void initState() {
     super.initState();
-    selectedIcon = widget._controller.value ?? widget._pickerIcons.first;
     filteredIcons = widget._pickerIcons.take(widget.iconsPerPage).toList();
     widget._controller.addListener(_updateState);
   }
@@ -56,9 +54,7 @@ class _IconPickerState extends State<IconPicker> {
   }
 
   void _updateState() {
-    setState(() {
-      selectedIcon = widget._controller.value ?? widget._pickerIcons.first;
-    });
+    setState(() {});
   }
 
   @override
@@ -76,7 +72,7 @@ class _IconPickerState extends State<IconPicker> {
               ),
               child: Center(
                 child: Icon(
-                  selectedIcon,
+                  widget._controller.value ?? widget._pickerIcons.first,
                   color: Theme.of(context).colorScheme.onPrimary,
                 ),
               ),
@@ -152,7 +148,6 @@ class _IconPickerState extends State<IconPicker> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          selectedIcon = icon;
           widget._controller.value = icon;
           widget.onIconPicked?.call(icon);
         });
