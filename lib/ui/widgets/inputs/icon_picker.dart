@@ -1,3 +1,4 @@
+import 'package:flcore/ui.dart';
 import 'package:flcore/ui/widgets/inputs/dots_pagination.dart';
 import 'package:flcore/ui/widgets/inputs/icon_packs.dart';
 import 'package:flutter/material.dart';
@@ -9,7 +10,7 @@ class IconPicker extends StatefulWidget {
     final IconPickerController? controller,
     required final List<IconPack> packs,
     this.iconsPerPage = 30,
-    required this.onIconPicked,
+    this.onIconPicked,
   }) {
     assert(packs.isNotEmpty);
     _controller = controller ?? IconPickerController();
@@ -21,7 +22,7 @@ class IconPicker extends StatefulWidget {
   late final List<IconData> _pickerIcons;
   late final Map<String, IconData> _iconMap;
   final int iconsPerPage;
-  final void Function(IconData) onIconPicked;
+  final void Function(IconData)? onIconPicked;
 
   @override
   State<IconPicker> createState() => _IconPickerState();
@@ -127,6 +128,7 @@ class _IconPickerState extends State<IconPicker> {
                   crossAxisSpacing: 5,
                 ),
               ),
+              const SizedBox(height: FlTheme.spacingSm),
               DotsPagination(
                 pageCount:
                     (widget._pickerIcons.length / widget.iconsPerPage).ceil(),
@@ -152,7 +154,7 @@ class _IconPickerState extends State<IconPicker> {
         setState(() {
           selectedIcon = icon;
           widget._controller.value = icon;
-          widget.onIconPicked(icon);
+          widget.onIconPicked?.call(icon);
         });
       },
       child: Icon(

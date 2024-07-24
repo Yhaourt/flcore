@@ -3,14 +3,16 @@ import 'package:flcore/utils/helpers/color_helper.dart';
 import 'package:flutter/material.dart';
 
 class ColorPicker extends StatefulWidget {
-  const ColorPicker({
+  ColorPicker({
     super.key,
-    required this.onColorPicked,
-    this.currentColor,
-  });
+    final ColorPickerController? controller,
+    this.onColorPicked,
+  }) {
+    _controller = controller ?? ColorPickerController();
+  }
 
-  final void Function(Color) onColorPicked;
-  final Color? currentColor;
+  late final ColorPickerController _controller;
+  final void Function(Color)? onColorPicked;
 
   @override
   State<ColorPicker> createState() => _ColorPickerState();
@@ -19,16 +21,38 @@ class ColorPicker extends StatefulWidget {
 class _ColorPickerState extends State<ColorPicker> {
   final List<List<Color>> palettes = colorPalettes();
   int currentPaletteIndex = 0;
-  Color selectedColor = Colors.transparent;
+  late Color selectedColor;
 
   @override
   void initState() {
-    setState(() {
-      selectedColor = widget.currentColor ?? palettes[currentPaletteIndex][4];
-      currentPaletteIndex =
-          palettes.indexWhere((palette) => palette.contains(selectedColor));
-    });
     super.initState();
+    selectedColor =
+        widget._controller.value ?? palettes[currentPaletteIndex][4];
+    currentPaletteIndex =
+        palettes.indexWhere((palette) => palette.contains(selectedColor));
+    widget._controller.addListener(_updateState);
+  }
+
+  @override
+  void didUpdateWidget(covariant ColorPicker oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget._controller != widget._controller) {
+      oldWidget._controller.removeListener(_updateState);
+      widget._controller.addListener(_updateState);
+    }
+  }
+
+  @override
+  void dispose() {
+    widget._controller.removeListener(_updateState);
+    super.dispose();
+  }
+
+  void _updateState() {
+    setState(() {
+      selectedColor =
+          widget._controller.value ?? palettes[currentPaletteIndex][4];
+    });
   }
 
   @override
@@ -67,7 +91,13 @@ class _ColorPickerState extends State<ColorPicker> {
             return _buildBox(
               color: palettes[currentPaletteIndex][index],
               checked: palettes[currentPaletteIndex][index] == selectedColor,
-              onTap: widget.onColorPicked,
+              onTap: (Color color) {
+                setState(() {
+                  selectedColor = color;
+                  widget._controller.value = color;
+                  widget.onColorPicked?.call(color);
+                });
+              },
             );
           },
           gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -83,24 +113,17 @@ class _ColorPickerState extends State<ColorPicker> {
 
   Widget _buildBox({
     required Color color,
-    Function(Color)? onTap,
+    required Function(Color) onTap,
     bool checked = false,
   }) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          selectedColor = color;
-        });
-        if (onTap != null) {
-          onTap(color);
-        }
-      },
+      onTap: () => onTap(color),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(FlTheme.borderRadius),
           color: color,
         ),
-        child: (checked)
+        child: checked
             ? Icon(
                 Icons.check,
                 color: Theme.of(context).colorScheme.onPrimary,
@@ -110,4 +133,8 @@ class _ColorPickerState extends State<ColorPicker> {
       ),
     );
   }
+}
+
+class ColorPickerController extends ValueNotifier<Color?> {
+  ColorPickerController({Color? color}) : super(color);
 }
