@@ -8,20 +8,19 @@ class IconPicker extends StatefulWidget {
     super.key,
     final IconPickerController? controller,
     required final List<IconPack> packs,
-    final IconData? defaultIcon,
+    this.iconsPerPage = 30,
     required this.onIconPicked,
   }) {
     assert(packs.isNotEmpty);
     _controller = controller ?? IconPickerController();
     _iconMap = {for (var pack in packs) ...pack.pack};
     _pickerIcons = _iconMap.values.toSet().toList();
-    _defaultIcon = defaultIcon ?? _pickerIcons.first;
   }
 
   late final IconPickerController _controller;
   late final List<IconData> _pickerIcons;
   late final Map<String, IconData> _iconMap;
-  late final IconData? _defaultIcon;
+  final int iconsPerPage;
   final void Function(IconData) onIconPicked;
 
   @override
@@ -35,8 +34,8 @@ class _IconPickerState extends State<IconPicker> {
   @override
   void initState() {
     super.initState();
-    selectedIcon = (widget._controller.value ?? widget._defaultIcon)!;
-    filteredIcons = widget._pickerIcons.take(30).toList();
+    selectedIcon = widget._controller.value ?? widget._pickerIcons.first;
+    filteredIcons = widget._pickerIcons.take(widget.iconsPerPage).toList();
     widget._controller.addListener(_updateState);
   }
 
@@ -57,7 +56,7 @@ class _IconPickerState extends State<IconPicker> {
 
   void _updateState() {
     setState(() {
-      selectedIcon = (widget._controller.value ?? widget._defaultIcon)!;
+      selectedIcon = widget._controller.value ?? widget._pickerIcons.first;
     });
   }
 
@@ -96,7 +95,7 @@ class _IconPickerState extends State<IconPicker> {
                               .toLowerCase()
                               .contains(value.toLowerCase());
                         })
-                        .take(30)
+                        .take(widget.iconsPerPage)
                         .toList();
                   });
                 },
@@ -129,11 +128,14 @@ class _IconPickerState extends State<IconPicker> {
                 ),
               ),
               DotsPagination(
-                pageCount: (widget._pickerIcons.length / 30).ceil(),
+                pageCount:
+                    (widget._pickerIcons.length / widget.iconsPerPage).ceil(),
                 onPageChange: (index) {
                   setState(() {
-                    filteredIcons =
-                        widget._pickerIcons.skip(index * 30).take(30).toList();
+                    filteredIcons = widget._pickerIcons
+                        .skip(index * widget.iconsPerPage)
+                        .take(widget.iconsPerPage)
+                        .toList();
                   });
                 },
               ),
