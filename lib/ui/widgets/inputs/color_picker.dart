@@ -6,15 +6,15 @@ class ColorPicker extends StatefulWidget {
   ColorPicker({
     super.key,
     final ColorPickerController? controller,
-    required final List<ColorPack> packs,
+    final List<ColorPack>? packs,
     this.onColorPicked,
   }) {
     _controller = controller ?? ColorPickerController();
-    _pickerColors = packs.map((pack) => pack.colors).toList();
+    _packs = packs ?? ColorPacks.allPacks;
   }
 
   late final ColorPickerController _controller;
-  late final List<List<Color>> _pickerColors;
+  late final List<ColorPack> _packs;
   final void Function(Color)? onColorPicked;
 
   @override
@@ -22,14 +22,15 @@ class ColorPicker extends StatefulWidget {
 }
 
 class _ColorPickerState extends State<ColorPicker> {
-  int currentPaletteIndex = 0;
+  int currentPackIndex = 0;
 
   @override
   void initState() {
     super.initState();
-    widget._controller.value ??= widget._pickerColors[currentPaletteIndex][4];
-    currentPaletteIndex = widget._pickerColors
-        .indexWhere((palette) => palette.contains(widget._controller.value));
+    widget._controller.value ??= widget._packs[currentPackIndex].defaultColor;
+    currentPackIndex = widget._packs.indexWhere(
+      (pack) => pack.colors.contains(widget._controller.value),
+    );
     widget._controller.addListener(_updateState);
   }
 
@@ -60,15 +61,15 @@ class _ColorPickerState extends State<ColorPicker> {
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: widget._pickerColors.length,
+          itemCount: widget._packs.length,
           itemBuilder: (context, index) {
             return _buildBox(
-              color: widget._pickerColors[index][4],
+              color: widget._packs[index].defaultColor,
               checked:
-                  widget._pickerColors[index][4] == widget._controller.value,
+                  widget._packs[index].defaultColor == widget._controller.value,
               onTap: (Color color) {
                 setState(() {
-                  currentPaletteIndex = index;
+                  currentPackIndex = index;
                 });
               },
             );
@@ -84,11 +85,11 @@ class _ColorPickerState extends State<ColorPicker> {
         GridView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: widget._pickerColors[currentPaletteIndex].length,
+          itemCount: widget._packs[currentPackIndex].colors.length,
           itemBuilder: (context, index) {
             return _buildBox(
-              color: widget._pickerColors[currentPaletteIndex][index],
-              checked: widget._pickerColors[currentPaletteIndex][index] ==
+              color: widget._packs[currentPackIndex].colors[index],
+              checked: widget._packs[currentPackIndex].colors[index] ==
                   widget._controller.value,
               onTap: (Color color) {
                 setState(() {
