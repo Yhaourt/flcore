@@ -65,8 +65,9 @@ class _ColorPickerState extends State<ColorPicker> {
           itemBuilder: (context, index) {
             return _buildBox(
               color: widget._packs[index].defaultColor,
-              checked:
-                  widget._packs[index].defaultColor == widget._controller.value,
+              checked: widget._packs[index].colors.contains(
+                widget._controller.value,
+              ),
               onTap: (Color color) {
                 setState(() {
                   currentPackIndex = index;
@@ -120,6 +121,10 @@ class _ColorPickerState extends State<ColorPicker> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+          border: Border.all(
+            color: Theme.of(context).colorScheme.surfaceContainer,
+            width: 1,
+          ),
           color: color,
         ),
         child: checked
