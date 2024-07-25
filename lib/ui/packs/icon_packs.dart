@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 
 class IconPack {
   IconPack({
-    required this.name,
-    required this.pack,
+    required this.icons,
   });
 
-  final String name;
-  final Map<String, IconData> pack;
+  final Map<String, IconData> icons;
 }
 
 class IconPacks {
   static final IconPack simplePack = IconPack(
-    name: 'Simple Pack',
-    pack: {
+    icons: {
       // Home and Furniture
       'home': Icons.home,
       'weekend': Icons.weekend,

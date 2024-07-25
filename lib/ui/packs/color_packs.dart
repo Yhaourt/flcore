@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class ColorPack {
   ColorPack({
-    required this.name,
-    required this.pack,
+    required this.defaultColor,
+    required this.colors,
   });
 
-  final String name;
-  final List<Color> pack;
+  final Color defaultColor;
+  final List<Color> colors;
 }
 
 class ColorPacks {
@@ -36,23 +36,22 @@ class ColorPacks {
   ];
 
   static final ColorPack blackPack = ColorPack(
-    name: 'Black Pack',
-    pack: <Color>[
+    defaultColor: Colors.black,
+    colors: <Color>[
       Colors.black,
     ],
   );
 
   static final ColorPack whitePack = ColorPack(
-    name: 'White Pack',
-    pack: <Color>[
+    defaultColor: Colors.white,
+    colors: <Color>[
       Colors.white,
     ],
   );
 
   static final ColorPack pinkPack = ColorPack(
-    name: 'Pink Pack',
-    pack: <Color>[
-      Colors.pink[50]!,
+    defaultColor: Colors.pink,
+    colors: <Color>[
       Colors.pink[100]!,
       Colors.pink[200]!,
       Colors.pink[300]!,
@@ -66,9 +65,8 @@ class ColorPacks {
   );
 
   static final ColorPack redPack = ColorPack(
-    name: 'Red Pack',
-    pack: <Color>[
-      Colors.red[50]!,
+    defaultColor: Colors.red,
+    colors: <Color>[
       Colors.red[100]!,
       Colors.red[200]!,
       Colors.red[300]!,
@@ -82,9 +80,8 @@ class ColorPacks {
   );
 
   static final ColorPack deepOrangePack = ColorPack(
-    name: 'Deep Orange Pack',
-    pack: <Color>[
-      Colors.deepOrange[50]!,
+    defaultColor: Colors.deepOrange,
+    colors: <Color>[
       Colors.deepOrange[100]!,
       Colors.deepOrange[200]!,
       Colors.deepOrange[300]!,
@@ -98,9 +95,8 @@ class ColorPacks {
   );
 
   static final ColorPack orangePack = ColorPack(
-    name: 'Orange Pack',
-    pack: <Color>[
-      Colors.orange[50]!,
+    defaultColor: Colors.orange,
+    colors: <Color>[
       Colors.orange[100]!,
       Colors.orange[200]!,
       Colors.orange[300]!,
@@ -114,9 +110,8 @@ class ColorPacks {
   );
 
   static final ColorPack amberPack = ColorPack(
-    name: 'Amber Pack',
-    pack: <Color>[
-      Colors.amber[50]!,
+    defaultColor: Colors.amber,
+    colors: <Color>[
       Colors.amber[100]!,
       Colors.amber[200]!,
       Colors.amber[300]!,
@@ -130,9 +125,8 @@ class ColorPacks {
   );
 
   static final ColorPack yellowPack = ColorPack(
-    name: 'Yellow Pack',
-    pack: <Color>[
-      Colors.yellow[50]!,
+    defaultColor: Colors.yellow,
+    colors: <Color>[
       Colors.yellow[100]!,
       Colors.yellow[200]!,
       Colors.yellow[300]!,
@@ -146,9 +140,8 @@ class ColorPacks {
   );
 
   static final ColorPack limePack = ColorPack(
-    name: 'Lime Pack',
-    pack: <Color>[
-      Colors.lime[50]!,
+    defaultColor: Colors.lime,
+    colors: <Color>[
       Colors.lime[100]!,
       Colors.lime[200]!,
       Colors.lime[300]!,
@@ -162,9 +155,8 @@ class ColorPacks {
   );
 
   static final ColorPack lightGreenPack = ColorPack(
-    name: 'Light Green Pack',
-    pack: <Color>[
-      Colors.lightGreen[50]!,
+    defaultColor: Colors.lightGreen,
+    colors: <Color>[
       Colors.lightGreen[100]!,
       Colors.lightGreen[200]!,
       Colors.lightGreen[300]!,
@@ -178,9 +170,8 @@ class ColorPacks {
   );
 
   static final ColorPack greenPack = ColorPack(
-    name: 'Green Pack',
-    pack: <Color>[
-      Colors.green[50]!,
+    defaultColor: Colors.green,
+    colors: <Color>[
       Colors.green[100]!,
       Colors.green[200]!,
       Colors.green[300]!,
@@ -194,9 +185,8 @@ class ColorPacks {
   );
 
   static final ColorPack tealPack = ColorPack(
-    name: 'Teal Pack',
-    pack: <Color>[
-      Colors.teal[50]!,
+    defaultColor: Colors.teal,
+    colors: <Color>[
       Colors.teal[100]!,
       Colors.teal[200]!,
       Colors.teal[300]!,
@@ -210,9 +200,8 @@ class ColorPacks {
   );
 
   static final ColorPack cyanPack = ColorPack(
-    name: 'Cyan Pack',
-    pack: <Color>[
-      Colors.cyan[50]!,
+    defaultColor: Colors.cyan,
+    colors: <Color>[
       Colors.cyan[100]!,
       Colors.cyan[200]!,
       Colors.cyan[300]!,
@@ -226,9 +215,8 @@ class ColorPacks {
   );
 
   static final ColorPack lightBluePack = ColorPack(
-    name: 'Light Blue Pack',
-    pack: <Color>[
-      Colors.lightBlue[50]!,
+    defaultColor: Colors.lightBlue,
+    colors: <Color>[
       Colors.lightBlue[100]!,
       Colors.lightBlue[200]!,
       Colors.lightBlue[300]!,
@@ -242,9 +230,8 @@ class ColorPacks {
   );
 
   static final ColorPack bluePack = ColorPack(
-    name: 'Blue Pack',
-    pack: <Color>[
-      Colors.blue[50]!,
+    defaultColor: Colors.blue,
+    colors: <Color>[
       Colors.blue[100]!,
       Colors.blue[200]!,
       Colors.blue[300]!,
@@ -258,9 +245,8 @@ class ColorPacks {
   );
 
   static final ColorPack indigoPack = ColorPack(
-    name: 'Indigo Pack',
-    pack: <Color>[
-      Colors.indigo[50]!,
+    defaultColor: Colors.indigo,
+    colors: <Color>[
       Colors.indigo[100]!,
       Colors.indigo[200]!,
       Colors.indigo[300]!,
@@ -274,9 +260,8 @@ class ColorPacks {
   );
 
   static final ColorPack purplePack = ColorPack(
-    name: 'Purple Pack',
-    pack: <Color>[
-      Colors.purple[50]!,
+    defaultColor: Colors.purple,
+    colors: <Color>[
       Colors.purple[100]!,
       Colors.purple[200]!,
       Colors.purple[300]!,
@@ -290,9 +275,8 @@ class ColorPacks {
   );
 
   static final ColorPack deepPurplePack = ColorPack(
-    name: 'Deep Purple Pack',
-    pack: <Color>[
-      Colors.deepPurple[50]!,
+    defaultColor: Colors.deepPurple,
+    colors: <Color>[
       Colors.deepPurple[100]!,
       Colors.deepPurple[200]!,
       Colors.deepPurple[300]!,
@@ -306,9 +290,8 @@ class ColorPacks {
   );
 
   static final ColorPack blueGreyPack = ColorPack(
-    name: 'Blue Grey Pack',
-    pack: <Color>[
-      Colors.blueGrey[50]!,
+    defaultColor: Colors.blueGrey,
+    colors: <Color>[
       Colors.blueGrey[100]!,
       Colors.blueGrey[200]!,
       Colors.blueGrey[300]!,
@@ -322,9 +305,8 @@ class ColorPacks {
   );
 
   static final ColorPack brownPack = ColorPack(
-    name: 'Brown Pack',
-    pack: <Color>[
-      Colors.brown[50]!,
+    defaultColor: Colors.brown,
+    colors: <Color>[
       Colors.brown[100]!,
       Colors.brown[200]!,
       Colors.brown[300]!,
@@ -338,9 +320,8 @@ class ColorPacks {
   );
 
   static final ColorPack greyPack = ColorPack(
-    name: 'Grey Pack',
-    pack: <Color>[
-      Colors.grey[50]!,
+    defaultColor: Colors.grey,
+    colors: <Color>[
       Colors.grey[100]!,
       Colors.grey[200]!,
       Colors.grey[300]!,

@@ -14,7 +14,7 @@ class IconPicker extends StatefulWidget {
   }) {
     assert(packs.isNotEmpty);
     _controller = controller ?? IconPickerController();
-    _iconMap = {for (var pack in packs) ...pack.pack};
+    _iconMap = {for (var pack in packs) ...pack.icons};
     _pickerIcons = _iconMap.values.toSet().toList();
   }
 

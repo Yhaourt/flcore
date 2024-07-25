@@ -10,7 +10,7 @@ class ColorPicker extends StatefulWidget {
     this.onColorPicked,
   }) {
     _controller = controller ?? ColorPickerController();
-    _pickerColors = packs.map((pack) => pack.pack).toList();
+    _pickerColors = packs.map((pack) => pack.colors).toList();
   }
 
   late final ColorPickerController _controller;
