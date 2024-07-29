@@ -36,6 +36,7 @@ class _IconPickerState extends State<IconPicker> {
   @override
   void initState() {
     super.initState();
+    widget._controller.value ??= widget._pickerIcons.first;
     filteredIcons = widget._pickerIcons.take(widget.iconsPerPage).toList();
     widget._controller.addListener(_updateState);
   }

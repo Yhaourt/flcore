@@ -39,7 +39,7 @@ class FlModalBottomSheet extends StatelessWidget {
     return Container(
       width: double.infinity,
       constraints: BoxConstraints(
-        maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.9,
+        maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.85,
       ),
       padding: EdgeInsets.only(
         top: FlTheme.spacing,
