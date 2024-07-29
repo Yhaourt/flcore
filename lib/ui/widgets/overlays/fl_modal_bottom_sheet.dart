@@ -39,7 +39,7 @@ class FlModalBottomSheet extends StatelessWidget {
     return Container(
       width: double.infinity,
       constraints: BoxConstraints(
-        maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.8,
+        maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.9,
       ),
       padding: EdgeInsets.only(
         top: FlTheme.spacing,
@@ -83,9 +83,9 @@ class FlModalBottomSheet extends StatelessWidget {
               ),
             SizedBox(height: FlTheme.spacingLg),
           ],
-          Padding(
-            padding: EdgeInsets.all(FlTheme.padding),
-            child: SingleChildScrollView(
+          SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.all(FlTheme.padding),
               child: child,
             ),
           ),
