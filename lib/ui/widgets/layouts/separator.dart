@@ -22,7 +22,7 @@ class Separator extends StatelessWidget {
           width: width ?? double.infinity,
           child: Divider(
             height: 0,
-            color: Theme.of(context).colorScheme.surface,
+            color: Theme.of(context).colorScheme.surfaceContainer,
           ),
         ),
         SizedBox(height: bottomSpace),
