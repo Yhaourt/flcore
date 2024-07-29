@@ -9,6 +9,7 @@ class Button extends StatelessWidget {
     this.icon,
     required this.onPressed,
     this.expanded = false,
+    this.thin = false,
     this.borderRadius,
     this.isLoading = false,
   });
@@ -17,6 +18,7 @@ class Button extends StatelessWidget {
   final VoidCallback onPressed;
   final IconData? icon;
   final bool expanded;
+  final bool thin;
   final double? borderRadius;
   final bool isLoading;
 
@@ -26,7 +28,7 @@ class Button extends StatelessWidget {
       width: expanded ? double.infinity : null,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          fixedSize: const Size.fromHeight(50),
+          fixedSize: Size.fromHeight(thin ? 38 : 50),
           backgroundColor: Theme.of(context).colorScheme.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(FlTheme.borderRadius),
