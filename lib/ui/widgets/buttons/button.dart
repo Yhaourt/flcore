@@ -6,6 +6,7 @@ class Button extends StatelessWidget {
   const Button({
     super.key,
     required this.text,
+    this.icon,
     required this.onPressed,
     this.expanded = false,
     this.borderRadius,
@@ -14,6 +15,7 @@ class Button extends StatelessWidget {
 
   final String text;
   final VoidCallback onPressed;
+  final IconData? icon;
   final bool expanded;
   final double? borderRadius;
   final bool isLoading;
@@ -36,11 +38,23 @@ class Button extends StatelessWidget {
             ? Loader(
                 size: LoaderSize.sm,
                 color: Theme.of(context).colorScheme.onPrimary)
-            : Text(
-                text,
-                style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+            : Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (icon != null) ...[
+                    Icon(
+                      icon,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
+                    const SizedBox(width: FlTheme.spacing),
+                  ],
+                  Text(
+                    text,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  ),
+                ],
               ),
       ),
     );
