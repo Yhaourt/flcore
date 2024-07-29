@@ -83,10 +83,12 @@ class FlModalBottomSheet extends StatelessWidget {
               ),
             SizedBox(height: FlTheme.spacingLg),
           ],
-          SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(FlTheme.padding),
-              child: child,
+          Expanded(
+            child: SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.all(FlTheme.padding),
+                child: child,
+              ),
             ),
           ),
         ],
