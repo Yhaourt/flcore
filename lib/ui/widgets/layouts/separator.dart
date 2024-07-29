@@ -1,10 +1,11 @@
+import 'package:flcore/flcore.dart';
 import 'package:flutter/material.dart';
 
 class Separator extends StatelessWidget {
   const Separator({
     super.key,
-    this.topSpace = 20,
-    this.bottomSpace = 20,
+    this.topSpace = FlTheme.spacing,
+    this.bottomSpace = FlTheme.spacing,
     this.width,
   });
 
