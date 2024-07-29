@@ -3,6 +3,7 @@ import 'package:flcore/ui/widgets/inputs/search_input.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
+/// Still in development
 class NetworkIconPicker extends StatefulWidget {
   const NetworkIconPicker({
     super.key,

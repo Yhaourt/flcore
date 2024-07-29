@@ -11,6 +11,7 @@ class IconPicker extends StatefulWidget {
     final List<IconPack>? packs,
     this.iconsPerPage = 30,
     this.onIconPicked,
+    this.pickedIconBackgroundColor,
   }) {
     _controller = controller ?? IconPickerController();
     final List<IconPack> iconPacks = packs ?? [IconPacks.simplePack];
@@ -23,6 +24,7 @@ class IconPicker extends StatefulWidget {
   late final Map<String, IconData> _iconMap;
   final int iconsPerPage;
   final void Function(IconData)? onIconPicked;
+  final Color? pickedIconBackgroundColor;
 
   @override
   State<IconPicker> createState() => _IconPickerState();
@@ -67,7 +69,8 @@ class _IconPickerState extends State<IconPicker> {
               height: 50,
               width: 50,
               decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
+                color: widget.pickedIconBackgroundColor ??
+                    Theme.of(context).colorScheme.primary,
                 borderRadius: BorderRadius.circular(FlTheme.borderRadius),
               ),
               child: Center(
