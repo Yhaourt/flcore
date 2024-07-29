@@ -31,6 +31,7 @@ class _ColorPickerState extends State<ColorPicker> {
     currentPackIndex = widget._packs.indexWhere(
       (pack) => pack.colors.contains(widget._controller.value),
     );
+    currentPackIndex = currentPackIndex == -1 ? 0 : currentPackIndex;
     widget._controller.addListener(_updateState);
   }
 
