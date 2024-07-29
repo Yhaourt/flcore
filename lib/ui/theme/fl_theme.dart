@@ -91,6 +91,8 @@ class FlTheme {
         onError: Colors.white,
       );
 
+  static const double spacingXs = 4;
+
   static const double spacingSm = 8;
 
   static const double spacing = 15;
