@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flcore/flcore.dart';
 
+enum SelectStyle { classic, noBorder }
+
 class Select<T> extends StatefulWidget {
   const Select({
     super.key,
@@ -9,6 +11,7 @@ class Select<T> extends StatefulWidget {
     this.pairs = const [],
     this.placeholder,
     this.isResettable = false,
+    this.selectStyle = SelectStyle.classic,
   });
 
   final SelectController<T> controller;
@@ -16,6 +19,7 @@ class Select<T> extends StatefulWidget {
   final List<Pair<T>> pairs;
   final String? placeholder;
   final bool isResettable;
+  final SelectStyle selectStyle;
 
   @override
   State<Select<T>> createState() => _SelectState<T>();
@@ -87,23 +91,34 @@ class _SelectState<T> extends State<Select<T>> {
               ),
           inputDecorationTheme: InputDecorationTheme(
             isDense: true,
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(FlTheme.borderRadiusSm),
-              borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.surface,
-                width: 2,
-              ),
-            ),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(FlTheme.borderRadiusSm),
-              borderSide: BorderSide(
-                color: Theme.of(context).colorScheme.primary,
-                width: 2,
-              ),
-            ),
+            filled: true,
+            fillColor: Theme.of(context).colorScheme.surfaceContainer,
+            border: _buildInputBorder(
+                context, Theme.of(context).colorScheme.primary),
+            enabledBorder: _buildInputBorder(
+                context, Theme.of(context).colorScheme.primary),
+            focusedBorder: _buildInputBorder(
+                context, Theme.of(context).colorScheme.primary),
+            errorBorder:
+                _buildInputBorder(context, Theme.of(context).colorScheme.error),
+            focusedErrorBorder:
+                _buildInputBorder(context, Theme.of(context).colorScheme.error),
+            errorStyle: const TextStyle(fontSize: 0),
           ),
         );
       },
+    );
+  }
+
+  OutlineInputBorder _buildInputBorder(BuildContext context, Color color) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+      borderSide: (widget.selectStyle == SelectStyle.noBorder)
+          ? BorderSide.none
+          : BorderSide(
+              color: color,
+              width: 2,
+            ),
     );
   }
 
