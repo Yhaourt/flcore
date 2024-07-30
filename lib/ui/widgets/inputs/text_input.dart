@@ -7,6 +7,7 @@ class TextInput extends StatefulWidget {
   const TextInput({
     super.key,
     this.controller,
+    this.keyboardType,
     this.onChanged,
     this.textInputStyle = TextInputStyle.classic,
     this.hintText,
@@ -20,6 +21,7 @@ class TextInput extends StatefulWidget {
   });
 
   final TextEditingController? controller;
+  final TextInputType? keyboardType;
   final Function(String)? onChanged;
   final TextInputStyle textInputStyle;
   final String? hintText;
@@ -46,6 +48,7 @@ class _TextInputState extends State<TextInput> {
       children: [
         TextFormField(
           controller: widget.controller,
+          keyboardType: widget.keyboardType,
           onChanged: widget.onChanged,
           validator: (value) {
             if (widget.validator != null) {
