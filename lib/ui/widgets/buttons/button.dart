@@ -28,11 +28,9 @@ class Button extends StatelessWidget {
       width: expanded ? double.infinity : null,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.symmetric(
-            horizontal: thin ? FlTheme.padding : FlTheme.padding / 2,
-            vertical: thin ? FlTheme.paddingSm : FlTheme.paddingSm / 2,
-          ),
-          fixedSize: Size.fromHeight(thin ? 38 : 50),
+          fixedSize: (icon != null && text == null)
+              ? Size(thin ? 38 : 50, thin ? 38 : 50)
+              : Size.fromHeight(thin ? 38 : 50),
           backgroundColor:
               backgroundColor ?? Theme.of(context).colorScheme.primary,
           shape: RoundedRectangleBorder(
