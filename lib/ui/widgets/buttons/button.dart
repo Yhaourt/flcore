@@ -5,7 +5,7 @@ import 'package:flcore/ui/theme/fl_theme.dart';
 class Button extends StatelessWidget {
   const Button({
     super.key,
-    this.text,
+    required this.text,
     this.icon,
     required this.onPressed,
     this.backgroundColor,
@@ -14,7 +14,7 @@ class Button extends StatelessWidget {
     this.isLoading = false,
   });
 
-  final String? text;
+  final String text;
   final IconData? icon;
   final VoidCallback onPressed;
   final Color? backgroundColor;
@@ -28,9 +28,7 @@ class Button extends StatelessWidget {
       width: expanded ? double.infinity : null,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          fixedSize: (icon != null && text == null)
-              ? Size(thin ? 38 : 50, thin ? 38 : 50)
-              : Size.fromHeight(thin ? 38 : 50),
+          fixedSize: Size.fromHeight(thin ? 38 : 50),
           backgroundColor:
               backgroundColor ?? Theme.of(context).colorScheme.primary,
           shape: RoundedRectangleBorder(
@@ -51,15 +49,14 @@ class Button extends StatelessWidget {
                       icon,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
-                    if (text != null) const SizedBox(width: FlTheme.spacing),
+                    const SizedBox(width: FlTheme.spacing),
                   ],
-                  if (text != null)
-                    Text(
-                      text!,
-                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                            color: Theme.of(context).colorScheme.onPrimary,
-                          ),
-                    ),
+                  Text(
+                    text,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                  ),
                 ],
               ),
       ),
