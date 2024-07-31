@@ -6,6 +6,7 @@ class FlTheme {
     final String? fontFamily,
     this.primaryColor = Colors.green,
     this.secondaryColor = Colors.lime,
+    this.tertiaryColor = Colors.orange,
   }) {
     _baseTheme = ThemeData(
       fontFamily: fontFamily ?? GoogleFonts.poppins().fontFamily,
@@ -28,6 +29,7 @@ class FlTheme {
 
   final Color primaryColor;
   final Color secondaryColor;
+  final Color tertiaryColor;
 
   ThemeData lightTheme() {
     final ColorScheme colorScheme = _lightColorScheme();
@@ -67,8 +69,8 @@ class FlTheme {
         onPrimary: Colors.white,
         secondary: secondaryColor,
         onSecondary: Colors.white,
-        tertiary: Colors.grey[100]!,
-        onTertiary: Colors.grey[900]!,
+        tertiary: tertiaryColor,
+        onTertiary: Colors.white,
         surface: Colors.white,
         surfaceContainer: Colors.grey[200]!,
         onSurface: Colors.grey[900]!,
@@ -82,8 +84,8 @@ class FlTheme {
         onPrimary: Colors.white,
         secondary: secondaryColor,
         onSecondary: Colors.white,
-        tertiary: Colors.grey[900]!,
-        onTertiary: Colors.grey[100]!,
+        tertiary: tertiaryColor,
+        onTertiary: Colors.white,
         surface: Colors.grey[900]!,
         surfaceContainer: Colors.grey[800]!,
         onSurface: Colors.grey[100]!,
