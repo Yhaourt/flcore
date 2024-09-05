@@ -11,7 +11,7 @@ mixin Create<T> {
 }
 
 mixin CreateFromDraft<T, D> {
-  Future<T> create(D draft);
+  Future<T> createFromDraft(D draft);
 }
 
 mixin Update<T> {
