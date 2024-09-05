@@ -6,6 +6,10 @@ export 'core/api/api.dart';
 export 'core/api/method.dart';
 export 'core/api/status_code_handler.dart';
 
+// Path: core/gateway
+export 'core/gateway/gateway.dart';
+export 'core/gateway/mixins.dart';
+
 // Path: core/di
 export 'core/di/di.dart';
 
