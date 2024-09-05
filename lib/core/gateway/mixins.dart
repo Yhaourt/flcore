@@ -6,12 +6,16 @@ mixin Find<T> {
   Future<T> find(String id);
 }
 
-mixin Create<T> {
+mixin Insert<T> {
   Future<T> create(T entity);
 }
 
 mixin Update<T> {
   Future<T> update(T entity);
+}
+
+mixin Upsert<T> {
+  Future<T> upsert(T entity);
 }
 
 mixin Delete<T> {
