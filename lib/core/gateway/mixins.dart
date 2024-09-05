@@ -7,7 +7,7 @@ mixin Find<T> {
 }
 
 mixin Insert<T> {
-  Future<T> create(T entity);
+  Future<T> insert(T entity);
 }
 
 mixin Update<T> {
