@@ -29,14 +29,16 @@ class Api {
   Future<dynamic> call({
     required String path,
     required Method method,
+    Map<String, dynamic>? params,
+    Map<String, dynamic>? body,
     Map<String, dynamic>? headers,
-    Map<String, dynamic>? data,
     Map<int, Function> statusCodeHandlers = const {},
   }) async {
     try {
       final Response<dynamic> response = await dio.request(
         path,
-        data: data,
+        queryParameters: params,
+        data: body,
         options: Options(
           method: methodToString(method),
           headers: headers,
