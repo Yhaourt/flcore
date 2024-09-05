@@ -68,14 +68,15 @@ class Api {
           logger.i({
             'url': options.uri,
             'method': options.method,
-            'data': options.data,
+            'body': options.data,
+            'params': options.queryParameters,
           });
           handler.next(options);
         },
         onResponse: (response, handler) {
           logger.i({
             'statusCode': response.statusCode,
-            'data': response.data,
+            'body': response.data,
           });
           handler.next(response);
         },
