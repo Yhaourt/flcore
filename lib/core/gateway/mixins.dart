@@ -10,10 +10,6 @@ mixin Create<T> {
   Future<T> create(T entity);
 }
 
-mixin CreateFromDraft<T, D> {
-  Future<T> createFromDraft(D draft);
-}
-
 mixin Update<T> {
   Future<T> update(T entity);
 }
