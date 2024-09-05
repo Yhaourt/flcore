@@ -10,7 +10,7 @@ class Api {
 
   Api({
     required String baseUrl,
-    required Map<String, String> headers,
+    Map<String, String>? headers,
     bool enableLogs = false,
   }) {
     dio = Dio(
