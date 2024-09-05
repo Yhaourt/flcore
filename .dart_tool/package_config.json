@@ -68,6 +68,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_dotenv",
+      "rootUri": "file:///C:/Users/Yhaourt/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_dotenv-5.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_secure_storage",
       "rootUri": "file:///C:/Users/Yhaourt/AppData/Local/Pub/Cache/hosted/pub.dev/flutter_secure_storage-9.2.2",
       "packageUri": "lib/",
@@ -296,10 +302,10 @@
       "languageVersion": "3.3"
     }
   ],
-  "generated": "2024-09-05T18:08:14.965581Z",
+  "generated": "2024-09-05T18:44:56.132990Z",
   "generator": "pub",
-  "generatorVersion": "3.5.1",
+  "generatorVersion": "3.5.2",
   "flutterRoot": "file:///C:/dev/tools/flutter",
-  "flutterVersion": "3.24.1",
+  "flutterVersion": "3.24.2",
   "pubCache": "file:///C:/Users/Yhaourt/AppData/Local/Pub/Cache"
 }
