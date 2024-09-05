@@ -1,4 +1,4 @@
-enum Method { get, post, put, delete }
+enum Method { get, post, put, delete, patch }
 
 String methodToString(Method method) {
   switch (method) {
@@ -10,5 +10,7 @@ String methodToString(Method method) {
       return 'PUT';
     case Method.delete:
       return 'DELETE';
+    case Method.patch:
+      return 'PATCH';
   }
 }

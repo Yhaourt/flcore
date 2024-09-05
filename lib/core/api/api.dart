@@ -10,6 +10,7 @@ class Api {
 
   Api({
     required String baseUrl,
+    required Map<String, String> headers,
     bool enableLogs = false,
   }) {
     dio = Dio(
@@ -18,6 +19,7 @@ class Api {
         connectTimeout: const Duration(seconds: 5),
         receiveTimeout: const Duration(seconds: 5),
         validateStatus: (status) => true,
+        headers: headers,
       ),
     );
 
