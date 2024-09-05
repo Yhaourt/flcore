@@ -7,7 +7,11 @@ mixin Find<T> {
 }
 
 mixin Create<T> {
-  Future<T> create(T draft);
+  Future<T> create(T entity);
+}
+
+mixin CreateFromDraft<T, D> {
+  Future<T> create(D draft);
 }
 
 mixin Update<T> {
