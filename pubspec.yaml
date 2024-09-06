@@ -3,7 +3,6 @@ description: 'Flutter Utility tools package.'
 version: 0.0.1
 
 repository: 'https://github.com/Yhaourt/flcore'
-publish_to: 'https://pub.dev/publishers/yhaourt.com'
 
 environment:
   sdk: '>=3.3.1 <4.0.0'
