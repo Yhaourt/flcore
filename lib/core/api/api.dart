@@ -1,9 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:flcore/core/api/call_i.dart';
 import 'package:flcore/core/api/method.dart';
+import 'package:flcore/core/api/status_code_handler.dart';
 import 'package:flcore/core/exceptions/exceptions.dart';
 import 'package:flcore/utils/helpers/logger_helper.dart';
 
-class Api {
+class Api implements CallI {
   late final Dio dio;
 
   Api({
@@ -24,13 +26,14 @@ class Api {
     if (enableLogs) _enableLogs();
   }
 
+  @override
   Future<dynamic> call({
     String? path,
     required Method method,
     Map<String, dynamic>? params,
     Map<String, dynamic>? body,
     Map<String, dynamic>? headers,
-    Map<int, Function> statusCodeHandlers = const {},
+    List<StatusCodeHandler> statusCodeHandlers = const [],
   }) async {
     try {
       final Response<dynamic> response = await dio.request(
@@ -42,6 +45,10 @@ class Api {
           headers: headers,
         ),
       );
+
+      for (final handler in statusCodeHandlers) {
+        handler.handle(response);
+      }
 
       return response.data;
     } on DioException catch (e) {
