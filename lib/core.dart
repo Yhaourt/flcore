@@ -11,7 +11,6 @@ export 'core/di/di.dart';
 
 // Path: core/exceptions
 export 'core/exceptions/exceptions.dart';
-export 'core/fl_app.dart';
 
 // Path: core/gateway
 export 'core/gateway/gateway.dart';

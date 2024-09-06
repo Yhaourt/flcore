@@ -1,6 +1,9 @@
 // Path: ui/theme
 export 'ui/theme/fl_theme.dart';
 
+// Path: ui/widgets
+export 'ui/widgets/fl_app.dart';
+
 // Path: ui/widgets/buttons
 export 'ui/widgets/buttons/button.dart';
 export 'ui/widgets/buttons/link_button.dart';

@@ -1,23 +1,33 @@
 import 'package:flutter/material.dart';
 
+enum AvatarSize { sm, md, lg }
+
 class Avatar extends StatelessWidget {
   const Avatar({
     super.key,
     this.imageUrl,
-    this.onTap,
+    this.size = AvatarSize.md,
   });
 
   final String? imageUrl;
-  final VoidCallback? onTap;
+  final AvatarSize size;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: CircleAvatar(
-        radius: 15,
-        backgroundImage: imageUrl != null ? NetworkImage(imageUrl!) : null,
-      ),
+    return CircleAvatar(
+      radius: _getSize(),
+      backgroundImage: imageUrl != null ? NetworkImage(imageUrl!) : null,
     );
+  }
+
+  double _getSize() {
+    switch (size) {
+      case AvatarSize.sm:
+        return 10;
+      case AvatarSize.md:
+        return 15;
+      case AvatarSize.lg:
+        return 20;
+    }
   }
 }
