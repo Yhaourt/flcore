@@ -3,20 +3,15 @@ import 'dart:async';
 /// A class that provides a stream of data.
 abstract class Provider<T> {
   Provider({
-    required this.load,
-    bool broadcastOnListen = true,
+    required this.fetch,
   }) {
     _streamController = StreamController<T>.broadcast(
-      onListen: () => (broadcastOnListen)
-          ? (_loaded)
-              ? broadcast(data)
-              : _loadAndBroadcast()
-          : null,
+      onListen: () => (_loaded) ? broadcast(data) : load(),
     );
   }
 
-  /// Function that loads the data.
-  final Future<T> Function() load;
+  /// Function that fetches the data.
+  final Future<T> Function() fetch;
 
   bool _loaded = false;
 
@@ -34,9 +29,10 @@ abstract class Provider<T> {
   /// Stream of data.
   Stream<T> get stream => _streamController.stream;
 
-  Future<void> _loadAndBroadcast() async {
+  /// Loads the data and broadcasts it.
+  Future<void> load() async {
     try {
-      broadcast(await load());
+      broadcast(await fetch());
       _loaded = true;
     } catch (e) {
       _streamController.addError(e);
