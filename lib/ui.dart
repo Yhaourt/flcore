@@ -1,4 +1,3 @@
-/********** Path: ui **********/
 // Path: ui/theme
 export 'ui/theme/fl_theme.dart';
 

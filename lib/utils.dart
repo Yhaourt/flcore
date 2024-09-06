@@ -1,4 +1,3 @@
-/********** Path: utils **********/
 // Path: utils/extensions
 export 'utils/extensions/string_extensions.dart';
 export 'utils/extensions/color_extension.dart';
