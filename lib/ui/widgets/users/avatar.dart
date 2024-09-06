@@ -25,9 +25,9 @@ class Avatar extends StatelessWidget {
       case AvatarSize.sm:
         return 10;
       case AvatarSize.md:
-        return 15;
-      case AvatarSize.lg:
         return 20;
+      case AvatarSize.lg:
+        return 30;
     }
   }
 }
