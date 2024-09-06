@@ -6,8 +6,6 @@ import 'package:flcore/utils/helpers/logger_helper.dart';
 class Api {
   late final Dio dio;
 
-  Dio getDio() => dio;
-
   Api({
     required String baseUrl,
     Map<String, String>? headers,
@@ -27,7 +25,7 @@ class Api {
   }
 
   Future<dynamic> call({
-    required String path,
+    String? path,
     required Method method,
     Map<String, dynamic>? params,
     Map<String, dynamic>? body,
@@ -36,7 +34,7 @@ class Api {
   }) async {
     try {
       final Response<dynamic> response = await dio.request(
-        path,
+        path ?? '',
         queryParameters: params,
         data: body,
         options: Options(
