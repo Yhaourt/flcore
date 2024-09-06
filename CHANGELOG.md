@@ -4,3 +4,6 @@
 
 ### Added
 - Initial release of `flcore` package.
+
+## [0.0.2] - 2024-09-06
+- Added method call Gateway
