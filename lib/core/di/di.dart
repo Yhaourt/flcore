@@ -7,7 +7,7 @@ class DependencyInjection {
   static Future<void> init({
     required Function(GetIt, Map<String, String> env) configure,
     Function(GetIt, Map<String, String>)? finalize,
-    bool loadEnv = true,
+    bool loadEnv = false,
     String envFile = '.env',
   }) async {
     if (loadEnv) await dotenv.load(fileName: envFile);
