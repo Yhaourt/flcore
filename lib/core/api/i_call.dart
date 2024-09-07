@@ -1,7 +1,7 @@
 import 'package:flcore/core/api/method.dart';
 import 'package:flcore/core/api/status_code_handler.dart';
 
-abstract class CallI {
+abstract class ICall {
   Future<dynamic> call({
     String? path,
     required Method method,

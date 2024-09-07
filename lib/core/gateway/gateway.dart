@@ -1,9 +1,9 @@
 import 'package:flcore/core/api/api.dart';
-import 'package:flcore/core/api/call_i.dart';
+import 'package:flcore/core/api/i_call.dart';
 import 'package:flcore/core/api/method.dart';
 import 'package:flcore/core/api/status_code_handler.dart';
 
-abstract class Gateway implements CallI {
+abstract class Gateway implements ICall {
   Gateway({
     required Api api,
     String? endpoint,
