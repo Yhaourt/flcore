@@ -17,8 +17,8 @@ class FlDrawer extends StatelessWidget {
       width: width,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(FlTheme.borderRadius),
-          bottomRight: Radius.circular(FlTheme.borderRadius),
+          topRight: Radius.circular(FlTheme.borderRadiusMd),
+          bottomRight: Radius.circular(FlTheme.borderRadiusMd),
         ),
       ),
       backgroundColor: Theme.of(context).colorScheme.surface,

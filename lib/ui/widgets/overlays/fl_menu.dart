@@ -12,7 +12,7 @@ void showFlMenu<T>(
     elevation: 1,
     color: Theme.of(context).colorScheme.surface,
     shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(FlTheme.borderRadiusSm),
+      borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
     ),
     popUpAnimationStyle: AnimationStyle.noAnimation,
     position: RelativeRect.fromLTRB(
@@ -74,7 +74,7 @@ class _FlMenuItemState<T> extends State<FlMenuItem<T>> {
         child: GestureDetector(
           onTap: () => Navigator.pop(context, widget.value),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: FlTheme.padding),
+            padding: const EdgeInsets.symmetric(horizontal: FlTheme.paddingMd),
             child: Row(
               children: [
                 if (widget.icon != null) ...[
@@ -83,7 +83,7 @@ class _FlMenuItemState<T> extends State<FlMenuItem<T>> {
                     color: widget.iconColor ??
                         Theme.of(context).colorScheme.onSurface,
                   ),
-                  const SizedBox(width: FlTheme.spacing),
+                  const SizedBox(width: FlTheme.spacingMd),
                 ],
                 Text(
                   widget.text,

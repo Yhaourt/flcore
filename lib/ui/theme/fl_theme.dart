@@ -93,25 +93,23 @@ class FlTheme {
         onError: Colors.white,
       );
 
-  static const double spacingXs = 4;
+  // Spacing
+  static const double spacingXs = 5;
+  static const double spacingSm = 10;
+  static const double spacingMd = 15; // Default spacing
+  static const double spacingLg = 20;
+  static const double spacingXl = 25;
 
-  static const double spacingSm = 8;
-
-  static const double spacing = 15;
-
-  static const double spacingLg = 30;
-
+  // Padding
+  static const double paddingXs = 3;
   static const double paddingSm = 8;
+  static const double paddingMd = 15; // Default padding
+  static const double paddingLg = 20;
+  static const double paddingXl = 25;
 
-  static const double padding = 15;
-
-  static const double paddingLg = 30;
-
-  static const double borderRadiusSm = 5;
-
-  static const double borderRadius = 10;
-
-  static const double borderRadiusLg = 15;
-
-  static const double borderRadiusFull = double.infinity;
+  // Border Radius
+  static const double borderRadiusMd = 5; // Default border radius
+  static const double borderRadiusLg = 10;
+  static const double borderRadiusXl = 15;
+  static const double borderRadiusXxl = 25;
 }

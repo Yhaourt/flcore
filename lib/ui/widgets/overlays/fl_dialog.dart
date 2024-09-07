@@ -30,7 +30,7 @@ class FlDialog extends StatelessWidget {
           insetPadding: EdgeInsets.all(FlTheme.paddingLg),
           backgroundColor: Theme.of(context).colorScheme.surface,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+            borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
           ),
           child: Padding(
             padding: EdgeInsets.all(FlTheme.paddingLg),

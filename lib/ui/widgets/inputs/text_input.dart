@@ -10,6 +10,7 @@ class TextInput extends StatefulWidget {
     this.keyboardType,
     this.onChanged,
     this.textInputStyle = TextInputStyle.classic,
+    this.label,
     this.hintText,
     this.prefixIcon,
     this.onPrefixIconPressed,
@@ -24,6 +25,7 @@ class TextInput extends StatefulWidget {
   final TextInputType? keyboardType;
   final Function(String)? onChanged;
   final TextInputStyle textInputStyle;
+  final String? label;
   final String? hintText;
   final IconData? prefixIcon;
   final VoidCallback? onPrefixIconPressed;
@@ -61,12 +63,7 @@ class _TextInputState extends State<TextInput> {
           obscureText: widget.obscureText,
           autofillHints: widget.autofillHints,
           decoration: InputDecoration(
-            filled: true,
-            fillColor: Theme.of(context).colorScheme.surfaceContainer,
-            contentPadding: const EdgeInsets.symmetric(
-              vertical: 13,
-              horizontal: 15,
-            ),
+            labelText: widget.label,
             hintText: widget.hintText,
             prefixIcon: widget.prefixIcon != null
                 ? GestureDetector(
@@ -86,6 +83,8 @@ class _TextInputState extends State<TextInput> {
                     ),
                   )
                 : null,
+            filled: true,
+            fillColor: Theme.of(context).colorScheme.surfaceContainer,
             border: _buildInputBorder(
                 context, Theme.of(context).colorScheme.primary),
             enabledBorder: _buildInputBorder(
@@ -114,7 +113,7 @@ class _TextInputState extends State<TextInput> {
 
   OutlineInputBorder _buildInputBorder(BuildContext context, Color color) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+      borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
       borderSide: (widget.textInputStyle == TextInputStyle.noBorder)
           ? BorderSide.none
           : BorderSide(

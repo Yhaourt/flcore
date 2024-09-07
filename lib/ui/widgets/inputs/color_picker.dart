@@ -121,7 +121,7 @@ class _ColorPickerState extends State<ColorPicker> {
       onTap: () => onTap(color),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+          borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
           border: Border.all(
             color: Theme.of(context).colorScheme.surfaceContainer,
             width: 1,

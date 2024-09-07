@@ -6,7 +6,7 @@ export 'ui/widgets/fl_app.dart';
 
 // Path: ui/widgets/buttons
 export 'ui/widgets/buttons/button.dart';
-export 'ui/widgets/buttons/link_button.dart';
+export 'ui/widgets/buttons/text_button.dart';
 
 // Path: ui/widgets/inputs
 export 'ui/widgets//inputs/color_picker.dart';

@@ -42,15 +42,15 @@ class FlModalBottomSheet extends StatelessWidget {
         maxHeight: maxHeight ?? MediaQuery.of(context).size.height * 0.85,
       ),
       padding: EdgeInsets.only(
-        top: FlTheme.spacing,
-        bottom: MediaQuery.of(context).viewInsets.bottom + FlTheme.padding,
-        left: FlTheme.spacing,
-        right: FlTheme.spacing,
+        top: FlTheme.spacingMd,
+        bottom: MediaQuery.of(context).viewInsets.bottom + FlTheme.paddingMd,
+        left: FlTheme.spacingMd,
+        right: FlTheme.spacingMd,
       ),
       decoration: BoxDecoration(
         color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.vertical(
-          top: Radius.circular(FlTheme.borderRadius),
+          top: Radius.circular(FlTheme.borderRadiusMd),
         ),
       ),
       child: Column(
@@ -63,7 +63,7 @@ class FlModalBottomSheet extends StatelessWidget {
               width: 50,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+                borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
               ),
             ),
           ),
@@ -86,7 +86,7 @@ class FlModalBottomSheet extends StatelessWidget {
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
-                padding: EdgeInsets.all(FlTheme.padding),
+                padding: EdgeInsets.all(FlTheme.paddingMd),
                 child: child,
               ),
             ),

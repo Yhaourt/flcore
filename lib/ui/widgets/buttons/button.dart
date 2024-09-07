@@ -32,7 +32,7 @@ class Button extends StatelessWidget {
           backgroundColor:
               backgroundColor ?? Theme.of(context).colorScheme.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+            borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
           ),
           elevation: 0,
         ),
@@ -49,7 +49,7 @@ class Button extends StatelessWidget {
                       icon,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
-                    const SizedBox(width: FlTheme.spacing),
+                    const SizedBox(width: FlTheme.spacingMd),
                   ],
                   Text(
                     text,

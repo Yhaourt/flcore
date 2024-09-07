@@ -19,8 +19,8 @@ showFlSnackBar(
       backgroundColor ?? Theme.of(context).colorScheme.secondary,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(FlTheme.borderRadius),
-          topRight: Radius.circular(FlTheme.borderRadius),
+          topLeft: Radius.circular(FlTheme.borderRadiusMd),
+          topRight: Radius.circular(FlTheme.borderRadiusMd),
         ),
       ),
     ),

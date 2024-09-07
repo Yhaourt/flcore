@@ -72,7 +72,7 @@ class _IconPickerState extends State<IconPicker> {
               decoration: BoxDecoration(
                 color: widget.pickedIconBackgroundColor ??
                     Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+                borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
               ),
               child: Center(
                 child: Icon(
@@ -81,7 +81,7 @@ class _IconPickerState extends State<IconPicker> {
                 ),
               ),
             ),
-            const SizedBox(width: FlTheme.spacing),
+            const SizedBox(width: FlTheme.spacingMd),
             Expanded(
               child: SearchInput(
                 hintText: 'Rechercher ...',
@@ -104,12 +104,12 @@ class _IconPickerState extends State<IconPicker> {
             ),
           ],
         ),
-        const SizedBox(height: FlTheme.spacing),
+        const SizedBox(height: FlTheme.spacingMd),
         Container(
-          padding: const EdgeInsets.all(FlTheme.padding),
+          padding: const EdgeInsets.all(FlTheme.paddingMd),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surfaceContainer,
-            borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+            borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
           ),
           child: Column(
             mainAxisSize: MainAxisSize.min,

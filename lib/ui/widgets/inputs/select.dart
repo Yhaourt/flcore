@@ -112,7 +112,7 @@ class _SelectState<T> extends State<Select<T>> {
 
   OutlineInputBorder _buildInputBorder(BuildContext context, Color color) {
     return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+      borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
       borderSide: (widget.selectStyle == SelectStyle.noBorder)
           ? BorderSide.none
           : BorderSide(

@@ -44,7 +44,7 @@ class _NetworkIconPickerState extends State<NetworkIconPicker> {
               width: 50,
               decoration: BoxDecoration(
                 color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+                borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
               ),
               child: Center(
                 child: Icon(
@@ -53,7 +53,7 @@ class _NetworkIconPickerState extends State<NetworkIconPicker> {
                 ),
               ),
             ),
-            SizedBox(width: FlTheme.spacing),
+            SizedBox(width: FlTheme.spacingMd),
             Expanded(
               child: SearchInput(
                 hintText: 'Rechercher ...',
@@ -71,12 +71,12 @@ class _NetworkIconPickerState extends State<NetworkIconPicker> {
             ),
           ],
         ),
-        SizedBox(height: FlTheme.spacing),
+        SizedBox(height: FlTheme.spacingMd),
         Container(
-          padding: EdgeInsets.all(FlTheme.padding),
+          padding: EdgeInsets.all(FlTheme.paddingMd),
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surfaceContainer,
-            borderRadius: BorderRadius.circular(FlTheme.borderRadius),
+            borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
           ),
           child: filteredIcons == null
               ? const Center(child: CircularProgressIndicator())
