@@ -91,6 +91,7 @@ class Api implements ICall {
           logger.i({
             'url': options.uri,
             'method': options.method,
+            'headers': options.headers,
             'body': options.data,
             'params': options.queryParameters,
           });
