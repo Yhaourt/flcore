@@ -27,6 +27,16 @@ class Handle401 extends StatusCodeHandler {
         );
 }
 
+class Handle404 extends StatusCodeHandler {
+  Handle404()
+      : super(
+          statusCode: 404,
+          callback: () {
+            throw NotFoundException();
+          },
+        );
+}
+
 class Handle500 extends StatusCodeHandler {
   Handle500()
       : super(

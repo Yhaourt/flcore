@@ -5,6 +5,13 @@ class UnknownException implements Exception {
   String toString() => 'Erreur inconnue. Veuillez réessayer.';
 }
 
+class NotFoundException implements Exception {
+  NotFoundException();
+
+  @override
+  String toString() => 'Ressource non trouvée. Veuillez réessayer.';
+}
+
 class InternalServerException implements Exception {
   InternalServerException();
 
@@ -16,5 +23,5 @@ class UnauthorizedException implements Exception {
   UnauthorizedException();
 
   @override
-  String toString() => 'Non autorisé. Veuillez vous reconnecter.';
+  String toString() => 'Non autorisé. Veuillez réessayer.';
 }
