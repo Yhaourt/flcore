@@ -5,17 +5,17 @@ mixin Vault {
   final FlutterSecureStorage _storage = FlutterSecureStorage();
 
   /// Stores a key-value pair.
-  Future<void> store(String key, String value) async {
+  Future<void> storeInVault(String key, String value) async {
     await _storage.write(key: key, value: value);
   }
 
   /// Retrieves a value by key.
-  Future<String?> retrieve(String key) async {
+  Future<String?> retrieveFromVault(String key) async {
     return await _storage.read(key: key);
   }
 
   /// Deletes a value by key.
-  Future<void> delete(String key) async {
+  Future<void> deleteFromVault(String key) async {
     await _storage.delete(key: key);
   }
 }
