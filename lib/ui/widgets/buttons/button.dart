@@ -9,6 +9,7 @@ class Button extends StatelessWidget {
     this.icon,
     required this.onPressed,
     this.backgroundColor,
+    this.textColor,
     this.borderColor,
     this.expanded = false,
     this.thin = false,
@@ -19,6 +20,7 @@ class Button extends StatelessWidget {
   final IconData? icon;
   final VoidCallback onPressed;
   final Color? backgroundColor;
+  final Color? textColor;
   final Color? borderColor;
   final bool expanded;
   final bool thin;
@@ -37,7 +39,7 @@ class Button extends StatelessWidget {
             borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
           ),
           side: BorderSide(
-            color: borderColor ?? Theme.of(context).colorScheme.primary,
+            color: borderColor ?? Colors.transparent,
             width: 1,
           ),
           elevation: 0,
@@ -53,14 +55,16 @@ class Button extends StatelessWidget {
                   if (icon != null) ...[
                     Icon(
                       icon,
-                      color: Theme.of(context).colorScheme.onPrimary,
+                      color:
+                          textColor ?? Theme.of(context).colorScheme.onPrimary,
                     ),
                     const SizedBox(width: FlTheme.spacingMd),
                   ],
                   Text(
                     text,
                     style: Theme.of(context).textTheme.bodyMedium!.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimary,
+                          color: textColor ??
+                              Theme.of(context).colorScheme.onPrimary,
                         ),
                   ),
                 ],
