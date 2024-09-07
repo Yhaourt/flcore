@@ -3,16 +3,27 @@ import 'dart:async';
 /// A class that provides a stream of data.
 abstract class Provider<T> {
   Provider({
-    required this.source,
+    this.source,
+    this.asyncSource,
     this.onDataChanged,
   }) {
+    if (source == null && asyncSource == null) {
+      throw Exception('source or asyncSource must be provided');
+    }
+    if (source != null && asyncSource != null) {
+      throw Exception(
+          'source and asyncSource cannot be provided at the same time');
+    }
     _streamController = StreamController<T>.broadcast(
       onListen: () => (_loaded) ? broadcast(data) : load(),
     );
   }
 
   /// Function that provides the initial data.
-  final Future<T> Function() source;
+  final T Function()? source;
+
+  /// Function that asynchronously provides the initial data.
+  final Future<T> Function()? asyncSource;
 
   /// Function that is called when the data changes.
   /// This function is called after the data is broadcasted.
@@ -37,7 +48,11 @@ abstract class Provider<T> {
   /// Loads the data and broadcasts it.
   Future<void> load() async {
     try {
-      broadcast(await source());
+      if (source != null) {
+        broadcast(source!());
+      } else if (asyncSource != null) {
+        broadcast(await asyncSource!());
+      }
       _loaded = true;
     } catch (e) {
       _streamController.addError(e);
