@@ -13,7 +13,7 @@ class DependencyInjection {
   late final Map<String, String>? env;
 
   /// Get an instance of a registered dependency.
-  Object call<Object>() => di<Object>();
+  T call<T extends Object>() => di<T>();
 
   Future<void> initialize({
     /// Function to configure the dependency injection container.
