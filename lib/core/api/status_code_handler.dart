@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flcore/exceptions/http_exceptions.dart';
 
-abstract class StatusCodeHandler {
+class StatusCodeHandler {
   const StatusCodeHandler({
     required this.statusCode,
     required this.callback,
