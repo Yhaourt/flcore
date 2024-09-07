@@ -9,6 +9,7 @@ class Button extends StatelessWidget {
     this.icon,
     required this.onPressed,
     this.backgroundColor,
+    this.borderColor,
     this.expanded = false,
     this.thin = false,
     this.loading = false,
@@ -18,6 +19,7 @@ class Button extends StatelessWidget {
   final IconData? icon;
   final VoidCallback onPressed;
   final Color? backgroundColor;
+  final Color? borderColor;
   final bool expanded;
   final bool thin;
   final bool loading;
@@ -33,6 +35,10 @@ class Button extends StatelessWidget {
               backgroundColor ?? Theme.of(context).colorScheme.primary,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(FlTheme.borderRadiusMd),
+          ),
+          side: BorderSide(
+            color: borderColor ?? Theme.of(context).colorScheme.primary,
+            width: 1,
           ),
           elevation: 0,
         ),
