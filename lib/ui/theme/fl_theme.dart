@@ -99,6 +99,7 @@ class FlTheme {
   static const double spacingMd = 15; // Default spacing
   static const double spacingLg = 20;
   static const double spacingXl = 25;
+  static const double spacingXxl = 35;
 
   // Padding
   static const double paddingXs = 3;
@@ -106,6 +107,7 @@ class FlTheme {
   static const double paddingMd = 15; // Default padding
   static const double paddingLg = 20;
   static const double paddingXl = 25;
+  static const double paddingXxl = 35;
 
   // Border Radius
   static const double borderRadiusMd = 5; // Default border radius
