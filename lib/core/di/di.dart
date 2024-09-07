@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 
+/// A class that provides dependency injection capabilities.
 class DependencyInjection {
   DependencyInjection({
     bool loadEnv = false,
@@ -26,10 +27,9 @@ class DependencyInjection {
   }
 
   /// Initialize the dependency injection container.
-  Future<void> initialize({
+  Future<void> initialize(
     /// Function to configure the dependency injection container.
-    required Function(GetIt container, Map<String, String> env) configure,
-
+    Function(GetIt container, Map<String, String> env) configure, {
     /// Function which is called after all dependencies are ready.
     Function(GetIt container, Map<String, String> env)? finalize,
   }) async {
@@ -45,10 +45,10 @@ class DependencyInjection {
   }
 
   /// Alter the dependency injection container.
-  Future<void> alter({
+  Future<void> alter(
     /// Function to alter the dependency injection container.
-    required Function(GetIt, Map<String, String> env) alter,
-  }) async {
+    Function(GetIt, Map<String, String> env) alter,
+  ) async {
     alter(_di, _env ?? {});
   }
 }
