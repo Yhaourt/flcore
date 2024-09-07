@@ -1,11 +1,21 @@
 mixin SignUp<T> {
-  Future<void> signUp(T entity);
+  Future<void> signUp({
+    required String email,
+    required String password,
+  });
 }
 
 mixin SignIn<T> {
-  Future<void> signIn(T entity);
+  Future<void> signIn({
+    required String email,
+    required String password,
+  });
 }
 
 mixin SignOut<T> {
-  Future<void> signOut(T entity);
+  Future<void> signOut();
+}
+
+mixin CurrentUser<T> {
+  Future<T> currentUser();
 }
