@@ -21,7 +21,6 @@ class LinkButton extends StatelessWidget {
         text,
         style: Theme.of(context).textTheme.bodyMedium?.copyWith(
               color: Theme.of(context).colorScheme.primary,
-              fontSize: 16,
             ),
       ),
     );
