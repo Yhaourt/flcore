@@ -66,6 +66,11 @@ abstract class Provider<T> {
     onDataChanged?.call(data);
   }
 
+  /// Broadcasts an error.
+  void broadcastError(Object error) {
+    _streamController.addError(error);
+  }
+
   /// Disposes the stream.
   void dispose() {
     _streamController.close();

@@ -6,14 +6,12 @@ import 'package:flcore/core/exceptions/exceptions.dart';
 import 'package:flcore/utils/helpers/logger_helper.dart';
 
 class Api implements ICall {
-  late final Dio dio;
-
   Api({
     required String baseUrl,
-    Map<String, String>? headers,
-    bool enableLogs = false,
+    this.headers = const {},
+    this.shouldEnableLogs = false,
   }) {
-    dio = Dio(
+    _dio = Dio(
       BaseOptions(
         baseUrl: baseUrl,
         connectTimeout: const Duration(seconds: 5),
@@ -23,8 +21,12 @@ class Api implements ICall {
       ),
     );
 
-    if (enableLogs) _enableLogs();
+    if (shouldEnableLogs) enableLogs();
   }
+
+  late final Dio _dio;
+  late Map<String, String> headers;
+  final bool shouldEnableLogs;
 
   @override
   Future<dynamic> call({
@@ -36,7 +38,7 @@ class Api implements ICall {
     List<StatusCodeHandler> statusCodeHandlers = const [],
   }) async {
     try {
-      final Response<dynamic> response = await dio.request(
+      final Response<dynamic> response = await _dio.request(
         path ?? '',
         queryParameters: params,
         data: body,
@@ -66,8 +68,24 @@ class Api implements ICall {
     }
   }
 
-  void _enableLogs() {
-    dio.interceptors.add(
+  void addHeader(String key, String value) {
+    headers[key] = value;
+  }
+
+  void addHeaders(Map<String, String> headers) {
+    this.headers.addAll(headers);
+  }
+
+  void removeHeader(String key) {
+    headers.remove(key);
+  }
+
+  void removeHeaders(List<String> keys) {
+    keys.forEach((key) => headers.remove(key));
+  }
+
+  void enableLogs() {
+    _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
           logger.i({
