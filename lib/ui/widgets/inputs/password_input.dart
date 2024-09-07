@@ -23,7 +23,7 @@ class _PasswordInputState extends State<PasswordInput> {
   Widget build(BuildContext context) {
     return TextInput(
       controller: widget.controller,
-      label: 'Mot de passe ...',
+      label: 'Mot de passe',
       prefixIcon: Icons.lock,
       suffixIcon: Icons.visibility,
       onSuffixIconPressed: () {
