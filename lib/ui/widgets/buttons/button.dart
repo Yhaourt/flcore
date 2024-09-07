@@ -11,7 +11,7 @@ class Button extends StatelessWidget {
     this.backgroundColor,
     this.expanded = false,
     this.thin = false,
-    this.isLoading = false,
+    this.loading = false,
   });
 
   final String text;
@@ -20,7 +20,7 @@ class Button extends StatelessWidget {
   final Color? backgroundColor;
   final bool expanded;
   final bool thin;
-  final bool isLoading;
+  final bool loading;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class Button extends StatelessWidget {
           elevation: 0,
         ),
         onPressed: onPressed,
-        child: (isLoading)
+        child: (loading)
             ? Loader(
                 size: LoaderSize.sm,
                 color: Theme.of(context).colorScheme.onPrimary)

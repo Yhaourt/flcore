@@ -6,11 +6,11 @@ class PasswordInput extends StatefulWidget {
   const PasswordInput({
     super.key,
     required this.controller,
-    this.needsValidation = true,
+    this.shouldValidate = true,
   });
 
   final TextEditingController controller;
-  final bool needsValidation;
+  final bool shouldValidate;
 
   @override
   State<PasswordInput> createState() => _PasswordInputState();
@@ -33,7 +33,7 @@ class _PasswordInputState extends State<PasswordInput> {
       },
       obscureText: hidden,
       validator: (value) {
-        if (!widget.needsValidation) {
+        if (!widget.shouldValidate) {
           return null;
         }
         if (value == null || value.isEmpty) {
