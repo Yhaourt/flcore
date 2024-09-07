@@ -9,7 +9,7 @@ class Api implements ICall {
   Api({
     required String baseUrl,
     this.headers = const {},
-    this.shouldEnableLogs = false,
+    this.enableLogs = false,
   }) {
     _dio = Dio(
       BaseOptions(
@@ -21,12 +21,12 @@ class Api implements ICall {
       ),
     );
 
-    if (shouldEnableLogs) enableLogs();
+    if (enableLogs) _enableLogs();
   }
 
   late final Dio _dio;
   late Map<String, String> headers;
-  final bool shouldEnableLogs;
+  final bool enableLogs;
 
   @override
   Future<dynamic> call({
@@ -71,6 +71,7 @@ class Api implements ICall {
   void addHeader(String key, String value) {
     headers[key] = value;
     _dio.options.headers[key] = value;
+    if (enableLogs) logger.i("Header added : $key : $value");
   }
 
   void addHeaders(Map<String, String> headers) {
@@ -80,13 +81,14 @@ class Api implements ICall {
   void removeHeader(String key) {
     headers.remove(key);
     _dio.options.headers.remove(key);
+    if (enableLogs) logger.i("Header removed : $key");
   }
 
   void removeHeaders(List<String> keys) {
     keys.forEach((key) => headers.remove(key));
   }
 
-  void enableLogs() {
+  void _enableLogs() {
     _dio.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) {
