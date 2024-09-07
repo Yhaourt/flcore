@@ -16,7 +16,7 @@ class EmailInput extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextInput(
       controller: controller,
-      hintText: 'Email ...',
+      label: 'Email ...',
       prefixIcon: Icons.email,
       validator: (value) {
         if (!needsValidation) {
