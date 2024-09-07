@@ -1,3 +1,3 @@
 import 'package:flcore/core/operations/mixins/auth.dart';
 
-abstract class IAuthGateway with SignIn, SignOut, SignUp {}
+abstract class IAuthGateway with SignUp, SignIn, SignOut {}
