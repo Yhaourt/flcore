@@ -6,6 +6,7 @@ abstract class Provider<T> {
     this.source,
     this.asyncSource,
     this.onDataChanged,
+    bool broadcastOnListen = true,
   }) {
     if (source == null && asyncSource == null) {
       throw Exception('source or asyncSource must be provided');
@@ -15,7 +16,11 @@ abstract class Provider<T> {
           'source and asyncSource cannot be provided at the same time');
     }
     _streamController = StreamController<T>.broadcast(
-      onListen: () => (_loaded) ? broadcast(data) : load(),
+      onListen: () => (broadcastOnListen)
+          ? (_loaded)
+              ? broadcast(data)
+              : load()
+          : null,
     );
   }
 
