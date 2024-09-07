@@ -3,9 +3,12 @@ export 'core/api/api.dart';
 export 'core/api/method.dart';
 export 'core/api/status_code_handler.dart';
 
-// Path: core/operations/mixins
-export 'core/operations/mixins/auth.dart';
-export 'core/operations/mixins/crud.dart';
+// Path: core/mixins
+export 'core/mixins/vault.dart';
+
+// Path: core/operations/operations
+export 'core/mixins/operations/auth.dart';
+export 'core/mixins/operations/crud.dart';
 
 // Path: core/di
 export 'core/di/di.dart';
