@@ -14,7 +14,7 @@ export 'core/mixins/operations/crud.dart';
 export 'core/di/di.dart';
 
 // Path: core/exceptions
-export 'core/exceptions/exceptions.dart';
+export 'exceptions/http_exceptions.dart';
 
 // Path: core/gateway
 export 'core/gateway/gateway.dart';

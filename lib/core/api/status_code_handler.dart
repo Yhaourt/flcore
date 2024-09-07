@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:flcore/core/exceptions/exceptions.dart';
+import 'package:flcore/exceptions/http_exceptions.dart';
 
 abstract class StatusCodeHandler {
   const StatusCodeHandler({

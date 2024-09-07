@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flcore/core/api/i_call.dart';
 import 'package:flcore/core/api/method.dart';
 import 'package:flcore/core/api/status_code_handler.dart';
-import 'package:flcore/core/exceptions/exceptions.dart';
+import 'package:flcore/exceptions/http_exceptions.dart';
 import 'package:flcore/utils/helpers/logger_helper.dart';
 
 class Api implements ICall {
