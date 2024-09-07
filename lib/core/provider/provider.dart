@@ -71,6 +71,12 @@ abstract class Provider<T> {
     _streamController.addError(error);
   }
 
+  /// Resets the provider.
+  void reset() {
+    _loaded = false;
+    _data = null;
+  }
+
   /// Disposes the stream.
   void dispose() {
     _streamController.close();
