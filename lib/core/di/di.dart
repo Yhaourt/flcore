@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get_it/get_it.dart';
 
@@ -6,38 +8,47 @@ class DependencyInjection {
     bool loadEnv = false,
     String envFile = '.env',
   }) {
-    if (loadEnv) dotenv.load(fileName: envFile);
+    if (loadEnv) _loadEnv(envFile);
   }
 
-  final di = GetIt.instance;
-  late final Map<String, String>? env;
+  final Completer<void> _envLoaded = Completer<void>();
+
+  final _di = GetIt.instance;
+  late final Map<String, String>? _env;
 
   /// Get an instance of a registered dependency.
-  T call<T extends Object>() => di<T>();
+  T call<T extends Object>() => _di<T>();
 
+  Future<void> _loadEnv(String fileName) async {
+    await dotenv.load(fileName: fileName);
+    _env = dotenv.env;
+    _envLoaded.complete();
+  }
+
+  /// Initialize the dependency injection container.
   Future<void> initialize({
     /// Function to configure the dependency injection container.
-    required Function(GetIt, Map<String, String> env) configure,
+    required Function(GetIt container, Map<String, String> env) configure,
 
     /// Function which is called after all dependencies are ready.
-    Function(GetIt, Map<String, String>)? finalize,
-    bool loadEnv = false,
-    String envFile = '.env',
+    Function(GetIt container, Map<String, String> env)? finalize,
   }) async {
-    if (loadEnv) await dotenv.load(fileName: envFile);
-    configure(di, dotenv.env);
+    await _envLoaded.future;
 
-    await di.allReady(
+    configure(_di, _env ?? {});
+
+    await _di.allReady(
       timeout: const Duration(seconds: 5),
     );
 
-    if (finalize != null) finalize(di, dotenv.env);
+    finalize?.call(_di, _env ?? {});
   }
 
+  /// Alter the dependency injection container.
   Future<void> alter({
     /// Function to alter the dependency injection container.
     required Function(GetIt, Map<String, String> env) alter,
   }) async {
-    alter(di, dotenv.env);
+    alter(_di, _env ?? {});
   }
 }
