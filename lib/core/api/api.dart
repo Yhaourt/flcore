@@ -70,6 +70,7 @@ class Api implements ICall {
 
   void addHeader(String key, String value) {
     headers[key] = value;
+    _dio.options.headers[key] = value;
   }
 
   void addHeaders(Map<String, String> headers) {
@@ -78,6 +79,7 @@ class Api implements ICall {
 
   void removeHeader(String key) {
     headers.remove(key);
+    _dio.options.headers.remove(key);
   }
 
   void removeHeaders(List<String> keys) {
