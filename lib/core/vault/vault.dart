@@ -1,20 +1,20 @@
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
-/// A mixin that provides secure storage functionality.
-mixin Vault {
+/// A class that provides secure storage functionality.
+class Vault {
   final FlutterSecureStorage _storage = FlutterSecureStorage();
 
-  /// Stores a key-value pair.
-  Future<void> storeInVault(String key, String value) async {
+  /// Writes a key-value pair to the vault.
+  Future<void> writeInVault(String key, String value) async {
     await _storage.write(key: key, value: value);
   }
 
-  /// Retrieves a value by key.
-  Future<String?> retrieveFromVault(String key) async {
+  /// Reads a value from the vault by key.
+  Future<String?> readFromVault(String key) async {
     return await _storage.read(key: key);
   }
 
-  /// Deletes a value by key.
+  /// Deletes a value from the vault by key.
   Future<void> deleteFromVault(String key) async {
     await _storage.delete(key: key);
   }

@@ -4,7 +4,7 @@ export 'core/api/method.dart';
 export 'core/api/status_code_handler.dart';
 
 // Path: core/mixins
-export 'core/mixins/vault.dart';
+export 'core/mixins/use_vault.dart';
 
 // Path: core/operations/operations
 export 'core/mixins/operations/auth.dart';
@@ -22,6 +22,9 @@ export 'core/gateway/gateway.dart';
 // Path : core/provider
 export 'core/provider/provider.dart';
 export 'core/routing/fl_route.dart';
+
+// Path : core/vault
+export 'core/vault/vault.dart';
 
 // Path: core/routing
 export 'core/routing/fl_router.dart';
