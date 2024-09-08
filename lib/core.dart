@@ -6,9 +6,16 @@ export 'core/api/status_code_handler.dart';
 // Path: core/mixins
 export 'core/mixins/use_vault.dart';
 
-// Path: core/operations/operations
-export 'core/mixins/operations/auth.dart';
-export 'core/mixins/operations/crud.dart';
+// Path: core/interfaces/api
+export 'core/interfaces/api/call.dart';
+
+// Path: core/interfaces/operations
+export 'core/interfaces/operations/auth.dart';
+export 'core/interfaces/operations/crud.dart';
+
+// Path: core/interfaces/classes
+export 'core/interfaces/classes/auth_gateway.dart';
+export 'core/interfaces/classes/auth_provider.dart';
 
 // Path: core/di
 export 'core/di/di.dart';

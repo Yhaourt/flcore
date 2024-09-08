@@ -1,5 +1,5 @@
 import 'package:flcore/core/api/api.dart';
-import 'package:flcore/core/api/i_call.dart';
+import 'package:flcore/core/interfaces/api/call.dart';
 import 'package:flcore/core/api/method.dart';
 import 'package:flcore/core/api/status_code_handler.dart';
 
