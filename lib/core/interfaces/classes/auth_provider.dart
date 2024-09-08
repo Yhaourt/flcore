@@ -1,4 +1,5 @@
 import 'package:flcore/core/interfaces/operations/auth.dart';
 
-abstract class IAuthProvider
-    implements ISignUp, ISignIn, ISignOut, IRefreshToken {}
+abstract class IAuthProvider implements ISignUp, ISignIn, ISignOut {
+  Future<void> refreshToken();
+}
