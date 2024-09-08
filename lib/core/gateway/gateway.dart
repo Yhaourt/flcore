@@ -18,6 +18,7 @@ abstract class Gateway implements ICall {
   @override
   Future<dynamic> call({
     String? path,
+    bool useEndpoint = true,
     required Method method,
     Map<String, dynamic>? params,
     Map<String, dynamic>? body,
@@ -25,7 +26,7 @@ abstract class Gateway implements ICall {
     List<StatusCodeHandler> statusCodeHandlers = const [],
   }) async {
     return _api.call(
-      path: _getCallPath(path),
+      path: (useEndpoint) ? _getFullPath(path) : path,
       method: method,
       params: params,
       body: body,
@@ -34,5 +35,5 @@ abstract class Gateway implements ICall {
     );
   }
 
-  String _getCallPath(String? path) => '${_endpoint ?? ''}${path ?? ''}';
+  String _getFullPath(String? path) => '${_endpoint ?? ''}${path ?? ''}';
 }
