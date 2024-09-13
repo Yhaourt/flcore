@@ -5,6 +5,7 @@ abstract class Provider<T> {
   Provider({
     this.source,
     this.asyncSource,
+    this.onListen,
     this.onDataChanged,
     bool broadcastOnListen = true,
   }) {
@@ -15,13 +16,16 @@ abstract class Provider<T> {
       throw Exception(
           'source and asyncSource cannot be provided at the same time');
     }
-    _streamController = StreamController<T>.broadcast(
-      onListen: () => (broadcastOnListen)
-          ? (_loaded)
-              ? broadcast(data)
-              : load()
-          : null,
-    );
+    _streamController = StreamController<T>.broadcast(onListen: () {
+      onListen?.call();
+
+      if (broadcastOnListen) {
+        if (_loaded)
+          broadcast(data);
+        else
+          load();
+      }
+    });
   }
 
   /// Function that provides the initial data.
@@ -29,6 +33,10 @@ abstract class Provider<T> {
 
   /// Function that asynchronously provides the initial data.
   final Future<T> Function()? asyncSource;
+
+  /// Function that is called when the stream is listened to.
+  /// This function is called before the data is broadcasted.
+  final void Function()? onListen;
 
   /// Function that is called when the data changes.
   /// This function is called after the data is broadcasted.
