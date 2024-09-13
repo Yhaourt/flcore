@@ -20,3 +20,4 @@ dependencies:
   flutter_bloc: ^8.1.6
   flutter_dotenv: ^5.1.0
   http: ^1.2.2
+  rxdart: ^0.28.0

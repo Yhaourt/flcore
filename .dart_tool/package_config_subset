@@ -146,6 +146,10 @@ provider
 2.12
 file:///home/yhaourt/.pub-cache/hosted/pub.dev/provider-6.1.2/
 file:///home/yhaourt/.pub-cache/hosted/pub.dev/provider-6.1.2/lib/
+rxdart
+2.12
+file:///home/yhaourt/.pub-cache/hosted/pub.dev/rxdart-0.28.0/
+file:///home/yhaourt/.pub-cache/hosted/pub.dev/rxdart-0.28.0/lib/
 source_span
 2.18
 file:///home/yhaourt/.pub-cache/hosted/pub.dev/source_span-1.10.0/

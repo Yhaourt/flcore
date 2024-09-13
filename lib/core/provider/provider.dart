@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:rxdart/rxdart.dart';
+
 /// A class that provides a stream of data.
 abstract class Provider<T> {
   Provider({
@@ -16,7 +18,8 @@ abstract class Provider<T> {
       throw Exception(
           'source and asyncSource cannot be provided at the same time');
     }
-    _streamController = StreamController<T>.broadcast(onListen: () {
+
+    _subject = BehaviorSubject<T>(onListen: () {
       onListen?.call();
 
       if (broadcastOnListen) {
@@ -56,10 +59,10 @@ abstract class Provider<T> {
     return _data!;
   }
 
-  late final StreamController<T> _streamController;
+  late final BehaviorSubject<T> _subject;
 
   /// Stream of data.
-  Stream<T> get stream => _streamController.stream;
+  Stream<T> get stream => _subject.stream;
 
   /// Loads the data and broadcasts it.
   Future<void> load() async {
@@ -71,20 +74,20 @@ abstract class Provider<T> {
       }
       _loaded = true;
     } catch (e) {
-      _streamController.addError(e);
+      _subject.addError(e);
     }
   }
 
   /// Broadcasts the data.
   void broadcast(T data) {
     _data = data;
-    _streamController.add(data);
+    _subject.add(data);
     onDataChanged?.call(data);
   }
 
   /// Broadcasts an error.
   void broadcastError(Object error) {
-    _streamController.addError(error);
+    _subject.addError(error);
   }
 
   /// Resets the provider.
@@ -95,6 +98,6 @@ abstract class Provider<T> {
 
   /// Disposes the stream.
   void dispose() {
-    _streamController.close();
+    _subject.close();
   }
 }
