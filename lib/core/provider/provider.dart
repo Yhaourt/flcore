@@ -36,6 +36,9 @@ abstract class Provider<T> {
 
   bool _loaded = false;
 
+  /// Whether the provider is loaded.
+  bool get loaded => _loaded;
+
   T? _data;
 
   /// Current data.
