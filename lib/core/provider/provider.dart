@@ -92,8 +92,17 @@ abstract class Provider<T> {
 
   /// Resets the provider.
   void reset() {
+    _subject.close();
     _loaded = false;
     _data = null;
+    _subject = BehaviorSubject<T>(onListen: () {
+      onListen?.call();
+
+      if (_loaded)
+        broadcast(data);
+      else
+        load();
+    });
   }
 
   /// Disposes the stream.
